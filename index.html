@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revolvidas Radio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="img/logo.png" alt="Revolvidas Radio" class="logo">
+        <h1>Revolvidas Radio</h1>
+        <p class="tagline">🔥 "HITS QUE NUNCA MUEREN"</p>
+        <p class="description">Clásicos de los 80’s y 90’s en vivo 🎶<br>Escucha la mejor música retro 24/7.</p>
+        
+        <button id="playBtn">Escuchar en Vivo</button>
+
+        <div class="links">
+            <a href="https://facebook.com" target="_blank" class="facebook">Facebook</a>
+            <a href="https://youtube.com" target="_blank" class="youtube">YouTube</a>
+        </div>
+    </div>
+
+    <audio id="radioPlayer" src="https://radio-proxy-iwb2.onrender.com/stream"></audio>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const player = document.getElementById('radioPlayer');
+        let isPlaying = false;
+
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                player.pause();
+                playBtn.textContent = 'Escuchar en Vivo';
+            } else {
+                player.play();
+                playBtn.textContent = 'Pausar';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>
