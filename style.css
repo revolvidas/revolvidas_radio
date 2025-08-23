@@ -1,100 +1,59 @@
-/* Fondo con la imagen */
 body {
-  margin: 0;
-  padding: 0;
+  margin:0; padding:0;
   font-family: 'Press Start 2P', Arial, sans-serif;
-  color: white;
-  text-align: center;
+  color:white;
+  text-align:center;
   background: url("img/rm383-14.jpg") no-repeat center center fixed;
   background-size: cover;
 }
-
-/* Contenedor principal */
 .container {
-  background: rgba(10, 10, 30, 0.8);
+  background: rgba(10,10,30,0.8);
   padding: 20px;
   border-radius: 15px;
   max-width: 500px;
   margin: 30px auto;
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
-
-/* Logo */
 .logo {
   width: 200px;
   margin-bottom: 20px;
 }
-
-/* Títulos */
 h2 {
   font-size: 18px;
-  font-weight: normal;
   margin-bottom: 15px;
-  color: #fff;
 }
-
-/* Texto final */
-p {
-  font-size: 14px;
-  margin: 20px 0;
+.radio-container {
+  margin: 30px 0;
 }
-
-/* Botones generales */
-.btn {
-  display: block;
-  width: 80%;
-  max-width: 300px;
-  margin: 15px auto;
-  padding: 15px;
-  border: none;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.2s, opacity 0.3s;
-}
-
-.btn:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-
-/* Botón Radio */
 .radio-btn {
-  background: linear-gradient(to right, #5808ff, #8a2be2);
+  background: linear-gradient(135deg, #6a00ff, #8a2be2);
+  color:white;
+  font-size:18px;
+  padding:14px 30px;
+  border:none;
+  border-radius:40px;
+  cursor:pointer;
+  box-shadow:0 6px 15px rgba(0,0,0,0.3);
+  transition:transform .3s;
 }
-
-/* Facebook */
-.facebook-btn {
-  background: linear-gradient(to right, #3b5998, #1d305e);
+.radio-btn:hover {
+  transform:scale(1.05);
 }
-
-/* Youtube */
-.youtube-btn {
-  background: linear-gradient(to right, #ff0000, #cc0000);
+.social-links a {
+  display:inline-block;
+  margin:0 10px;
+  padding:12px 25px;
+  background: linear-gradient(135deg, #6a00ff, #8a2be2);
+  color:white;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:transform .3s;
 }
-
-/* Remixes */
-.remixes-btn {
-  background: linear-gradient(to right, #00ccff, #0027ff);
+.social-links a:hover {
+  transform:scale(1.1);
 }
-
-/* Loader animado */
-#loader {
-  display: none;
-  margin-top: 15px;
-  font-size: 14px;
-  font-family: 'Press Start 2P', cursive;
-  color: #fff;
-  animation: blink 1s infinite;
-  text-align: center;
+p {
+  margin-top:20px;
+  font-size:14px;
 }
-
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.3; }
-  100% { opacity: 1; }
-}
-
