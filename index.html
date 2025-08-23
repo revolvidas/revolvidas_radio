@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    /* Loader animado */
+    #loader {
+      display: none;
+      margin-top: 15px;
+      font-size: 14px;
+      font-family: 'Press Start 2P', cursive;
+      color: #fff;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -17,11 +35,11 @@
     <!-- Botón Reproducción -->
     <div class="radio-container">
       <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
-      <div id="loading" class="loading">🎵 Cargando<span id="dots"></span></div>
       <audio id="radioPlayer" preload="none">
-        <source src="https://radio-proxy.wo1.ovh/encoder/1234/stream" type="audio/mpeg">
+        <source src="https://radio-proxy-web2.onrender.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
+      <div id="loader">Cargando...</div>
     </div>
 
     <!-- Botones sociales -->
@@ -35,42 +53,24 @@
   </div>
 
   <script>
-  let dotsInterval;
-
   function toggleRadio() {
     const player = document.getElementById("radioPlayer");
     const playBtn = document.getElementById("playBtn");
-    const loading = document.getElementById("loading");
-    const dots = document.getElementById("dots");
+    const loader = document.getElementById("loader");
 
     if (player.paused) {
-      loading.style.display = "block"; // Mostrar "Cargando"
-
-      // Animación de puntitos
-      let dotCount = 0;
-      dotsInterval = setInterval(() => {
-        dotCount = (dotCount + 1) % 4;
-        dots.textContent = ".".repeat(dotCount);
-      }, 500);
-
+      loader.style.display = "block"; // mostrar cargando
       player.play().then(() => {
         playBtn.textContent = "⏸ Pausar";
-      }).catch(error => {
-        console.error("Error al reproducir:", error);
-        loading.style.display = "none";
-        clearInterval(dotsInterval);
+        loader.style.display = "none"; // ocultar cargando cuando ya suene
+      }).catch(err => {
+        console.log("Error al reproducir:", err);
+        loader.style.display = "none";
       });
-
     } else {
       player.pause();
       playBtn.textContent = "▶ Reproducir";
     }
-
-    // Cuando realmente empieza a sonar:
-    player.addEventListener("playing", () => {
-      loading.style.display = "none";
-      clearInterval(dotsInterval);
-    });
   }
   </script>
 </body>
