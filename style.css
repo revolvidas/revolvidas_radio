@@ -1,59 +1,93 @@
+/* Fuente global */
 body {
-  margin:0; padding:0;
-  font-family: 'Press Start 2P', Arial, sans-serif;
-  color:white;
-  text-align:center;
-  background: url("img/rm383-14.jpg") no-repeat center center fixed;
-  background-size: cover;
+  font-family: 'Press Start 2P', cursive;
+  background: linear-gradient(135deg, #0f0f0f, #1a0033);
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
+
+/* Contenedor principal */
 .container {
-  background: rgba(10,10,30,0.8);
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  border-radius: 15px;
-  max-width: 500px;
-  margin: 30px auto;
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
+
+/* Logo */
 .logo {
-  width: 200px;
+  max-width: 250px;
+  margin: 20px auto;
+  display: block;
+}
+
+/* Eslogan */
+h2 {
+  font-size: 14px;
+  color: #ff00cc;
+  text-shadow: 2px 2px 4px #000;
   margin-bottom: 20px;
 }
-h2 {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-.radio-container {
-  margin: 30px 0;
-}
+
+/* Botón de radio */
 .radio-btn {
-  background: linear-gradient(135deg, #6a00ff, #8a2be2);
-  color:white;
-  font-size:18px;
-  padding:14px 30px;
-  border:none;
-  border-radius:40px;
-  cursor:pointer;
-  box-shadow:0 6px 15px rgba(0,0,0,0.3);
-  transition:transform .3s;
+  font-size: 12px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #00ffea;
+  color: #000;
+  cursor: pointer;
+  margin: 20px 0;
+  box-shadow: 0px 0px 10px #00ffea, 0px 0px 20px #00ffea inset;
+  transition: 0.3s;
 }
 .radio-btn:hover {
-  transform:scale(1.05);
+  background: #ff00cc;
+  color: #fff;
+  box-shadow: 0px 0px 12px #ff00cc, 0px 0px 25px #ff00cc inset;
 }
-.social-links a {
-  display:inline-block;
-  margin:0 10px;
-  padding:12px 25px;
-  background: linear-gradient(135deg, #6a00ff, #8a2be2);
-  color:white;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:bold;
-  transition:transform .3s;
+
+/* Botones sociales */
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 15px;
+  font-size: 10px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
 }
-.social-links a:hover {
-  transform:scale(1.1);
+
+.facebook-btn {
+  background: #1877f2;
+  color: #fff;
 }
+.facebook-btn:hover {
+  background: #145dbf;
+}
+
+.youtube-btn {
+  background: #ff0000;
+  color: #fff;
+}
+.youtube-btn:hover {
+  background: #cc0000;
+}
+
+.remixes-btn {
+  background: #ff9800;
+  color: #fff;
+}
+.remixes-btn:hover {
+  background: #e68900;
+}
+
+/* Texto final */
 p {
-  margin-top:20px;
-  font-size:14px;
+  font-size: 10px;
+  color: #ddd;
+  margin-top: 30px;
+  line-height: 1.6;
 }
