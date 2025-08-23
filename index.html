@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-
     <!-- Logo -->
     <img src="img/logo.png" alt="Revolvidas Radio Logo" class="logo">
 
@@ -20,30 +19,36 @@
     <div class="radio-container">
       <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
       <audio id="radioPlayer" preload="none">
-        <source src="https://radio-proxy.web2.onrender.com/radio" type="audio/mpeg">
+        <source src="https://radio-proxy.web2.orenrnd.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
+
+      <!-- Barra de volumen -->
+      <div class="volume-container">
+        <label for="volume">🔊 Volumen:</label>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+      </div>
     </div>
 
     <!-- Botones sociales -->
-    <div>
+    <div class="social-buttons">
       <a href="https://facebook.com" class="btn facebook-btn" target="_blank">Facebook</a>
       <a href="https://youtube.com" class="btn youtube-btn" target="_blank">Youtube</a>
       <a href="#" class="btn remixes-btn">Remixes</a>
     </div>
 
     <p>
-      Clásicos de los 80's y 90's en vivo <br>
+      Clásicos de los 80’s y 90’s en vivo <br>
       Escucha la mejor música retro 24/7.
     </p>
-
   </div>
 
   <script>
-    function toggleRadio() {
-      const player = document.getElementById('radioPlayer');
-      const playBtn = document.getElementById('playBtn');
+    const player = document.getElementById('radioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const volumeControl = document.getElementById('volume');
 
+    function toggleRadio() {
       if (player.paused) {
         player.play();
         playBtn.textContent = "⏸ Pausar";
@@ -52,6 +57,11 @@
         playBtn.textContent = "▶ Reproducir";
       }
     }
+
+    // Control de volumen
+    volumeControl.addEventListener("input", function() {
+      player.volume = this.value;
+    });
   </script>
 </body>
 </html>
