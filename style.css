@@ -27,6 +27,7 @@ body {
 
 /* Títulos */
 h1 {
+  display: none;
   font-size: 48px;
   font-weight: normal;
   font-family: 'Monoton', cursive;  /* Fuente estilo logo retro */
