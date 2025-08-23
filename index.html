@@ -8,67 +8,115 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(135deg, #1e0c57, #0d1b63);
       color: white;
       text-align: center;
-      padding: 50px 20px;
+      padding: 30px 15px;
     }
     .card {
-      background: rgba(0,0,0,0.6);
+      max-width: 420px;
+      margin: auto;
       padding: 20px;
-      border-radius: 20px;
-      display: inline-block;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border-radius: 25px;
+      background: rgba(0,0,0,0.2);
     }
     .card img {
       width: 150px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     h1 {
+      font-size: 2.5em;
       color: #ff00cc;
-      margin: 10px 0;
+      margin: 10px 0 20px 0;
+      font-weight: bold;
     }
-    .social-links {
-      margin-top: 20px;
+    p {
+      color: #ddd;
+      margin: 8px 0;
     }
-    .social-links a {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 10px 20px;
+    .button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 12px 0;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1em;
       color: white;
       text-decoration: none;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.1);
-      transition: background 0.3s;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
     }
-    .social-links a:hover {
-      background: rgba(255,255,255,0.3);
+    .button span {
+      flex: 1;
+      text-align: left;
+    }
+    .button i {
+      font-size: 1.4em;
+    }
+    .play {
+      background: linear-gradient(90deg, #ff00cc, #3333ff);
+    }
+    .facebook {
+      background: linear-gradient(90deg, #3b5998, #00aced);
+    }
+    .youtube {
+      background: linear-gradient(90deg, #ff0000, #cc0000);
+    }
+    .mixcloud {
+      background: linear-gradient(90deg, #232526, #414345);
+    }
+    .button:hover {
+      opacity: 0.85;
     }
   </style>
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <div class="card">
+    <!-- LOGO -->
     <img src="logo.png" alt="Revolvidas Radio">
+
+    <!-- FRASE -->
     <p>🔥 “HITS QUE NUNCA MUEREN”</p>
-    <h1>revolvidas radio</h1>
+
+    <!-- TITULO -->
+    <h1>revolvidas<br>radio</h1>
+
+    <!-- TEXTO -->
     <p>Clásicos de los 80’s y 90’s en vivo 🎶</p>
-    <p>Escucha la mejor música</p>
+    <p>Escucha la mejor música retro 24/7.</p>
 
-    <!-- Botón de radio -->
-    <div>
-      <button onclick="toggleRadio()">▶️ Escuchar</button>
-      <audio id="radioPlayer" preload="none">
-        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
-        Tu navegador no soporta audio HTML5.
-      </audio>
-    </div>
+    <!-- BOTON RADIO -->
+    <button class="button play" onclick="toggleRadio()">
+      <span>▶️ Escuchar en Vivo</span>
+      <i class="fas fa-podcast"></i>
+    </button>
+    <audio id="radioPlayer" preload="none">
+      <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
+      Tu navegador no soporta audio HTML5.
+    </audio>
 
-    <!-- Links redes -->
-    <div class="social-links">
-      <a href="https://www.facebook.com/revolvidas" target="_blank">Facebook</a>
-      <a href="https://www.youtube.com/@djwalydorado" target="_blank">YouTube</a>
-      <a href="https://www.mixcloud.com/walter-dorado/" target="_blank">Mixcloud</a>
-    </div>
+    <!-- FACEBOOK -->
+    <a class="button facebook" href="https://www.facebook.com/revolvidas" target="_blank">
+      <span>Facebook</span>
+      <i class="fab fa-facebook"></i>
+    </a>
+
+    <!-- YOUTUBE -->
+    <a class="button youtube" href="https://www.youtube.com/@djwalydorado" target="_blank">
+      <span>YouTube</span>
+      <i class="fab fa-youtube"></i>
+    </a>
+
+    <!-- MIXCLOUD -->
+    <a class="button mixcloud" href="https://www.mixcloud.com/walter-dorado/" target="_blank">
+      <span>Remixes</span>
+      <i class="fab fa-soundcloud"></i>
+    </a>
   </div>
 
   <script>
