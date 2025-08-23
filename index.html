@@ -42,24 +42,24 @@
    <p>Clásicos de los 80’s y 90’s en vivo 🎶<br>
        Escucha la mejor música retro 24/7.</p>
 <script>
-const player = document.getElementById("radioplayer");
-const playbtn = document.getElementById("playbtn");
-const volumeControl = document.getElementById("volume");
+  const player = document.getElementById("radioPlayer");
+  const playbtn = document.getElementById("playbtn");
+  const volumeControl = document.getElementById("volumeControl");
 
-function toggleRadio() {
-  if (player.paused) {
-    player.play();
-    playbtn.textContent = "⏸ Pausar";
-  } else {
-    player.pause();
-    playbtn.textContent = "▶ Reproducir";
+  function toggleRadio() {
+    if (player.paused) {
+      player.play();
+      playbtn.textContent = "⏸ Pausar";
+    } else {
+      player.pause();
+      playbtn.textContent = "▶ Reproducir";
+    }
   }
-}
 
-// Controlar volumen
-volumeControl.addEventListener("input", () => {
-  player.volume = volumeControl.value;
-});
+  // Control de volumen
+  volumeControl.addEventListener("input", function() {
+    player.volume = this.value;
+  });
 </script>
 </body>
 </html>
