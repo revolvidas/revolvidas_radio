@@ -1,43 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revolvidas Radio</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <img src="img/logo.png" alt="Revolvidas Radio" class="logo">
-        <h1>Revolvidas Radio</h1>
-        <p class="tagline">🔥 "HITS QUE NUNCA MUEREN"</p>
-        <p class="description">Clásicos de los 80’s y 90’s en vivo 🎶<br>Escucha la mejor música retro 24/7.</p>
-        
-        <button id="playBtn">Escuchar en Vivo</button>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revolvidas Radio</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a1a, #333);
+      color: white;
+      text-align: center;
+    }
 
-        <div class="links">
-            <a href="https://facebook.com" target="_blank" class="facebook">Facebook</a>
-            <a href="https://youtube.com" target="_blank" class="youtube">YouTube</a>
-        </div>
-    </div>
+    header {
+      padding: 20px;
+    }
 
-    <audio id="radioPlayer" src="https://radio-proxy-iwb2.onrender.com/stream"></audio>
+    header img {
+      max-width: 200px;
+    }
 
-    <script>
-        const playBtn = document.getElementById('playBtn');
-        const player = document.getElementById('radioPlayer');
-        let isPlaying = false;
+    h1 {
+      font-size: 2.5em;
+      margin: 10px 0;
+    }
 
-        playBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                player.pause();
-                playBtn.textContent = 'Escuchar en Vivo';
-            } else {
-                player.play();
-                playBtn.textContent = 'Pausar';
-            }
-            isPlaying = !isPlaying;
-        });
-    </script>
-</body>
-</html>
+    p {
+      font-size: 1.2em;
+      margin: 10px 0 30px;
+    }
