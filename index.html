@@ -48,4 +48,63 @@
       border-radius: 40px;
       cursor: pointer;
       box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      transition: all 0
+      transition: all 0.3s ease;
+    }
+
+    .radio-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #4a00e0, #8e2de2);
+    }
+
+    .radio-btn:active {
+      transform: scale(0.95);
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background: #111;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo Revolvidas" />
+    <h1>Revolvidas Radio</h1>
+    <p>Escucha en vivo nuestra transmisión</p>
+  </header>
+
+  <!-- Botón de radio -->
+  <div class="radio-container">
+    <button class="radio-btn" onclick="toggleRadio()">Reproducir</button>
+
+    <audio id="radioPlayer" preload="none">
+      <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
+      Tu navegador no soporta audio HTML5.
+    </audio>
+  </div>
+
+  <footer>
+    © 2025 Revolvidas Radio - Todos los derechos reservados
+  </footer>
+
+  <script>
+    let playing = false;
+    const player = document.getElementById('radioPlayer');
+    const btn = document.querySelector('.radio-btn');
+
+    function toggleRadio() {
+      if (playing) {
+        player.pause();
+        btn.textContent = 'Reproducir';
+      } else {
+        player.play();
+        btn.textContent = 'Pausar';
+      }
+      playing = !playing;
+    }
+  </script>
+</body>
+</html>
