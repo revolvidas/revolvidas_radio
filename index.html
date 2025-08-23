@@ -5,49 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Fuente ochentera -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
 </head>
-  
 <body>
   <div class="container">
     <!-- Logo -->
     <img src="img/logo.png" alt="Revolvidas Radio Logo" class="logo">
 
     <!-- Eslogan -->
-    <h2> HITS QUE NUNCA MUEREN </h2>
- 
- 
+    <h2>HITS QUE NUNCA MUEREN</h2>
 
     <!-- Botón Reproducir -->
     <div class="radio-container">
       <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
       <audio id="radioPlayer" preload="none">
-        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
+        <source src="https://radio-proxy.ice2.onennder.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
+
+      <!-- Cargando -->
+      <div id="loading" class="loading">🎵 Cargando<span id="dots"></span></div>
     </div>
 
     <!-- Botones sociales -->
-    <a href="https://facebook.com" class="btn facebook-btn" target="_blank">Facebook</a>
-    <a href="https://youtube.com" class="btn youtube-btn" target="_blank">Youtube</a>
-    <a href="#" class="btn remixes-btn">Remixes</a>
-  </div>
-   <p>Clásicos de los 80’s y 90’s en vivo 🎶<br>
-       Escucha la mejor música retro 24/7.</p>
-  <script>
-    function toggleRadio() {
-      const player = document.getElementById("radioPlayer");
-      const playBtn = document.getElementById("playBtn");
+    <div>
+      <a href="https://facebook.com" class="btn facebook-btn" target="_blank">Facebook</a>
+      <a href="https://youtube.com" class="btn youtube-btn" target="_blank">Youtube</a>
+      <a href="#" class="btn remixes-btn">Remixes</a>
+    </div>
 
-      if (player.paused) {
-        player.play();
+    <!-- Texto final -->
+    <p>Clásicos de los 80’s y 90’s en vivo 🎶<br>
+    Escucha la mejor música retro 24/7.</p>
+  </div>
+
+  <script>
+  let dotsInterval;
+
+  function toggleRadio() {
+    const player = document.getElementById("radioPlayer");
+    const playBtn = document.getElementById("playBtn");
+    const loading = document.getElementById("loading");
+    const dots = document.getElementById("dots");
+
+    if (player.paused) {
+      loading.style.display = "block"; // Mostrar cargando
+
+      // Animación de puntitos
+      let dotCount = 0;
+      dotsInterval = setInterval(() => {
+        dotCount = (dotCount + 1) % 4; // 0,1,2,3
+        dots.textContent = ".".repeat(dotCount);
+      }, 500);
+
+      player.play().then(() => {
         playBtn.textContent = "⏸ Pausar";
-      } else {
-        player.pause();
-        playBtn.textContent = "▶ Reproducir";
-      }
+        loading.style.display = "none";
+        clearInterval(dotsInterval);
+      }).catch(error => {
+        console.error("Error al reproducir:", error);
+        loading.style.display = "none";
+        clearInterval(dotsInterval);
+      });
+    } else {
+      player.pause();
+      playBtn.textContent = "▶ Reproducir";
     }
+  }
   </script>
 </body>
 </html>
