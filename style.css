@@ -1,123 +1,90 @@
-/* Fondo general */
+/* Fondo con la imagen */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Press Start 2P', cursive;
-  background: url("img/rm383-14.jpg") no-repeat center center fixed;
-  background-size: cover;
+  font-family: Arial, sans-serif;
   color: white;
   text-align: center;
+  background: url("img/rm383-14.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 /* Contenedor principal */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  background: rgba(10, 10, 30, 0.8); /* un poco de transparencia */
   padding: 20px;
-  background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+  border-radius: 15px;
+  max-width: 500px;
+  margin: 30px auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
 /* Logo */
 .logo {
-  max-width: 250px;
+  width: 200px;
   margin-bottom: 20px;
 }
 
-/* Eslogan */
+/* Títulos */
+h1 {
+  display: none;
+  font-size: 48px;
+  font-weight: normal;
+  font-family: 'Monoton', cursive;  /* Fuente estilo logo retro */
+  color: #a020f0; /* Un morado neón, puedes ajustar */
+  text-shadow: 0 0 5px #a020f0, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+  margin: 10px 0;
+}
+
 h2 {
-  font-size: 14px;
-  margin-bottom: 20px;
-  color: #ff00ff; /* Fucsia retro */
-  text-shadow: 2px 2px 6px #000;
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin: 15px 0 25px;
 }
 
 /* Botones generales */
 .btn {
-  display: inline-block;
-  padding: 12px 20px;
-  margin: 8px;
+  display: block;
+  width: 80%;
+  max-width: 300px;
+  margin: 15px auto;
+  padding: 15px;
   border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: bold;
   color: white;
-  font-family: 'Press Start 2P', cursive;
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.3s;
 }
 
-/* Hover en botones */
 .btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+  opacity: 0.9;
 }
 
-/* Botón de Reproducir */
+/* Botón Radio (Fucsia) */
 .radio-btn {
-  background: #9b4dff; /* Morado retro */
+  background: linear-gradient(to right, #6a00ff, #8a2be2);
 }
 
-/* Botones sociales */
+/* Facebook */
 .facebook-btn {
-  background: #1877f2;
+  background: linear-gradient(to right, #3b5998, #1d2d50);
 }
+
+/* Youtube */
 .youtube-btn {
-  background: #ff0000;
+  background: linear-gradient(to right, #ff0000, #cc0000);
 }
+
+/* Remixes */
 .remixes-btn {
-  background: #ff6600;
-}
-
-/* Barra de volumen */
-.volume-container {
-  margin-top: 15px;
-  color: white;
-  font-size: 12px;
-}
-
-#volume {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 150px;
-  height: 8px;
-  background: #444;
-  border-radius: 5px;
-  outline: none;
-  margin-left: 10px;
-  cursor: pointer;
-  box-shadow: 0 0 8px #ff00ff;
-}
-
-/* Estilo del "slider" (círculo) */
-#volume::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #ff00ff;
-  cursor: pointer;
-  box-shadow: 0 0 8px #ff00ff;
-}
-
-#volume::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #ff00ff;
-  cursor: pointer;
-  box-shadow: 0 0 8px #ff00ff;
-}
-
-/* Texto de descripción */
-p {
-  margin-top: 25px;
-  font-size: 10px;
-  line-height: 1.5;
-  color: #fff;
-  text-shadow: 1px 1px 4px #000;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
 }
