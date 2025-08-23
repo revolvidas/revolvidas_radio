@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Press Start 2P', Arial, sans-serif;
   color: white;
   text-align: center;
   background: url("img/rm383-14.jpg") no-repeat center center fixed;
@@ -11,7 +11,7 @@ body {
 
 /* Contenedor principal */
 .container {
-  background: rgba(10, 10, 30, 0.8); /* un poco de transparencia */
+  background: rgba(10, 10, 30, 0.8);
   padding: 20px;
   border-radius: 15px;
   max-width: 500px;
@@ -26,26 +26,17 @@ body {
 }
 
 /* Títulos */
-h1 {
-  display: none;
-  font-size: 48px;
-  font-weight: normal;
-  font-family: 'Monoton', cursive;  /* Fuente estilo logo retro */
-  color: #a020f0; /* Un morado neón, puedes ajustar */
-  text-shadow: 0 0 5px #a020f0, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-  margin: 10px 0;
-}
-
 h2 {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 16px;
-  color: #a64dff; /* morado retro */
+  font-size: 18px;
+  font-weight: normal;
   margin-bottom: 15px;
+  color: #fff;
 }
 
+/* Texto final */
 p {
-  font-size: 18px;
-  margin: 15px 0 25px;
+  font-size: 14px;
+  margin: 20px 0;
 }
 
 /* Botones generales */
@@ -57,7 +48,7 @@ p {
   padding: 15px;
   border: none;
   border-radius: 50px;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
   color: white;
   text-decoration: none;
@@ -70,14 +61,14 @@ p {
   opacity: 0.9;
 }
 
-/* Botón Radio (Fucsia) */
+/* Botón Radio */
 .radio-btn {
-  background: linear-gradient(to right, #6a00ff, #8a2be2);
+  background: linear-gradient(to right, #5808ff, #8a2be2);
 }
 
 /* Facebook */
 .facebook-btn {
-  background: linear-gradient(to right, #3b5998, #1d2d50);
+  background: linear-gradient(to right, #3b5998, #1d305e);
 }
 
 /* Youtube */
@@ -87,14 +78,14 @@ p {
 
 /* Remixes */
 .remixes-btn {
-  background: linear-gradient(to right, #00c6ff, #0072ff);
+  background: linear-gradient(to right, #00ccff, #0027ff);
 }
 
-/* Cargando animado */
+/* Loader */
 .loading {
   display: none;
-  margin-top: 10px;
   font-size: 14px;
-  font-family: 'Press Start 2P', cursive;
-  color: white;
+  margin-top: 10px;
+  color: #fff;
+  font-style: italic;
 }
