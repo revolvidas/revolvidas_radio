@@ -4,25 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- Forzar recarga del CSS con versión -->
+  <link rel="stylesheet" href="style.css?v=2">
+  <!-- Fuente ochentera -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <style>
-    /* Loader animado */
-    #loader {
-      display: none;
-      margin-top: 15px;
-      font-size: 14px;
-      font-family: 'Press Start 2P', cursive;
-      color: #fff;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0.3; }
-      100% { opacity: 1; }
-    }
-  </style>
 </head>
 <body>
   <div class="container">
@@ -32,14 +17,13 @@
     <!-- Eslogan -->
     <h2>HITS QUE NUNCA MUEREN</h2>
 
-    <!-- Botón Reproducción -->
+    <!-- Botón Reproductor -->
     <div class="radio-container">
       <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
       <audio id="radioPlayer" preload="none">
-        <source src="https://radio-proxy-web2.onrender.com/radio" type="audio/mpeg">
+        <source src="https://radio-proxy-wb2.onrender.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
-      <div id="loader">Cargando...</div>
     </div>
 
     <!-- Botones sociales -->
@@ -49,29 +33,22 @@
       <a href="#" class="btn remixes-btn">Remixes</a>
     </div>
 
-    <p>Clásicos de los 80’s y 90’s en vivo 🎶<br>Escucha la mejor música retro 24/7.</p>
+    <p>Clásicos de los 80’s y 90’s en vivo 🎶 <br> Escucha la mejor música retro 24/7.</p>
   </div>
 
   <script>
-  function toggleRadio() {
-    const player = document.getElementById("radioPlayer");
-    const playBtn = document.getElementById("playBtn");
-    const loader = document.getElementById("loader");
+    function toggleRadio() {
+      const player = document.getElementById("radioPlayer");
+      const playBtn = document.getElementById("playBtn");
 
-    if (player.paused) {
-      loader.style.display = "block"; // mostrar cargando
-      player.play().then(() => {
+      if (player.paused) {
+        player.play();
         playBtn.textContent = "⏸ Pausar";
-        loader.style.display = "none"; // ocultar cargando cuando ya suene
-      }).catch(err => {
-        console.log("Error al reproducir:", err);
-        loader.style.display = "none";
-      });
-    } else {
-      player.pause();
-      playBtn.textContent = "▶ Reproducir";
+      } else {
+        player.pause();
+        playBtn.textContent = "▶ Reproducir";
+      }
     }
-  }
   </script>
 </body>
 </html>
