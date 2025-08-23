@@ -4,99 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1a1a40, #000000);
-      color: white;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .card {
-      background: linear-gradient(135deg, #0f0f3d, #1a1a40);
-      border-radius: 20px;
-      padding: 30px 20px;
-      width: 90%;
-      max-width: 400px;
-      margin: 0 auto; /* 👈 Ajuste para que quede arriba sin espacio extra */
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-    }
-
-    .logo {
-      width: 120px;
-      margin-bottom: 15px;
-    }
-
-    h1 {
-      font-size: 32px;
-      color: #ff00cc;
-      margin: 10px 0;
-    }
-
-    h2 {
-      font-size: 16px;
-      font-weight: normal;
-      color: #ccc;
-      margin-bottom: 20px;
-    }
-
-    p {
-      margin: 8px 0;
-      font-size: 14px;
-      color: #ddd;
-    }
-
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 10px auto;
-      padding: 12px;
-      width: 90%;
-      border-radius: 50px;
-      font-size: 16px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-    }
-
-    .live {
-      background: linear-gradient(90deg, #ff0080, #ff00cc);
-    }
-
-    .facebook {
-      background: linear-gradient(90deg, #3b5998, #4e73c2);
-    }
-
-    .youtube {
-      background: linear-gradient(90deg, #ff0000, #cc0000);
-    }
-
-    .mixcloud {
-      background: linear-gradient(90deg, #232526, #414345);
-    }
-
-    footer {
-      margin-top: 20px;
-      font-size: 12px;
-      color: #aaa;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
+  <div class="container">
+    <!-- Logo -->
     <img src="logo.png" alt="Revolvidas Radio Logo" class="logo">
-    <h2>🔥 “HITS QUE NUNCA MUEREN”</h2>
-    <h1>revolvidas radio</h1>
-    <p>Clásicos de los 80’s y 90’s en vivo 🎶</p>
-    <p>Escucha la mejor músi
+
+    <!-- Eslogan -->
+    <p class="slogan">🔥 “HITS QUE NUNCA MUEREN”</p>
+
+    <!-- Título -->
+    <h1 class="titulo">revolvidas radio</h1>
+
+    <!-- Descripción -->
+    <p class="descripcion">
+      Clásicos de los 80’s y 90’s en vivo 🎶 <br>
+      Escucha la mejor música retro 24/7.
+    </p>
+
+    <!-- Botones -->
+    <a href="https://tu-link-streaming" class="btn live">▶ Escuchar en Vivo</a>
+    <a href="https://www.facebook.com/revolvidas" class="btn fb">Facebook</a>
+    <a href="https://www.youtube.com/@djwalydorado" class="btn yt">YouTube</a>
+    <a href="https://www.mixcloud.com/walter-dorado/" class="btn remix">Remixes</a>
+  </div>
+</body>
+</html>
