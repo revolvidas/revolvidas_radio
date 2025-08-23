@@ -1,76 +1,85 @@
-/* === ESTILOS PRINCIPALES === */
+/* Fondo */
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: white;
   margin: 0;
   padding: 0;
-  text-align: center;
+  font-family: Arial, sans-serif;
+  background: url("img/rm383-14.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
 }
 
+/* Contenedor central */
 .container {
   max-width: 400px;
-  margin: 50px auto;
+  margin: 0 auto;
+  text-align: center;
   padding: 20px;
+  background: rgba(0, 0, 50, 0.7); /* fondo oscuro semi-transparente */
   border-radius: 20px;
-  background: rgba(0, 0, 0, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  margin-top: 30px;
 }
 
+/* Logo */
 .logo {
   width: 150px;
   margin-bottom: 20px;
 }
 
-h1 {
-  font-size: 2.5rem;
-  color: #ff00ff;
-  margin: 10px 0;
+/* Slogan */
+.slogan {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 10px;
 }
 
-.tagline {
-  font-style: italic;
-  color: #bbb;
-  margin-bottom: 20px;
+/* Título */
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ff00cc;
+  margin-bottom: 10px;
 }
 
-/* === BOTONES === */
+/* Descripción */
+.description {
+  font-size: 16px;
+  color: #ddd;
+  margin-bottom: 30px;
+}
+
+/* Botones */
 .btn {
   display: block;
-  margin: 15px auto;
-  padding: 15px;
-  border: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
   text-decoration: none;
-  color: white;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 18px;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: transform 0.2s ease;
 }
 
 .btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Colores de los botones */
 .live {
-  background: linear-gradient(90deg, #ff00cc, #3333ff);
+  background: linear-gradient(to right, #ff00cc, #ff66ff);
+  color: white;
 }
 
 .facebook {
-  background: linear-gradient(90deg, #3b5998, #192f6a);
+  background: linear-gradient(to right, #3b5998, #8b9dc3);
+  color: white;
 }
 
 .youtube {
-  background: linear-gradient(90deg, #ff0000, #cc0000);
+  background: linear-gradient(to right, #ff0000, #cc0000);
+  color: white;
 }
 
-.mixcloud {
-  background: linear-gradient(90deg, #485563, #29323c);
-}
-
-/* === ICONOS ALINEADOS === */
-.btn i {
-  margin-left: 10px;
+.remixes {
+  background: linear-gradient(to right, #444, #222);
+  color: white;
 }
