@@ -1,71 +1,76 @@
-/* Fondo y centrado */
+/* === ESTILOS PRINCIPALES === */
 body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: white;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #1a1a1a, #4a00e0);
-  font-family: Arial, sans-serif;
-  color: white;
-}
-
-/* Contenedor principal */
-.container {
   text-align: center;
-  width: 100%;
-  max-width: 500px;
-  padding: 20px;
 }
 
-/* Logo */
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
 .logo {
-  width: 180px;
+  width: 150px;
   margin-bottom: 20px;
 }
 
-/* Botón de Radio */
-.radio-btn {
-  background: linear-gradient(135deg, #8e2de2, #4a00e0);
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 14px 30px;
+h1 {
+  font-size: 2.5rem;
+  color: #ff00ff;
+  margin: 10px 0;
+}
+
+.tagline {
+  font-style: italic;
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+/* === BOTONES === */
+.btn {
+  display: block;
+  margin: 15px auto;
+  padding: 15px;
   border: none;
-  border-radius: 40px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-}
-
-.radio-btn:hover {
-  transform: scale(1.05);
-  background: linear-gradient(135deg, #4a00e0, #8e2de2);
-}
-
-.radio-btn:active {
-  transform: scale(0.95);
-}
-
-/* Redes Sociales */
-.social-links {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.social-links a {
   text-decoration: none;
   color: white;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  transition: background 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.social-links a:hover {
-  background: rgba(255, 255, 255, 0.3);
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.live {
+  background: linear-gradient(90deg, #ff00cc, #3333ff);
+}
+
+.facebook {
+  background: linear-gradient(90deg, #3b5998, #192f6a);
+}
+
+.youtube {
+  background: linear-gradient(90deg, #ff0000, #cc0000);
+}
+
+.mixcloud {
+  background: linear-gradient(90deg, #485563, #29323c);
+}
+
+/* === ICONOS ALINEADOS === */
+.btn i {
+  margin-left: 10px;
 }
