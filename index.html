@@ -4,24 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .card {
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 20px;
+      display: inline-block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .card img {
+      width: 150px;
+      margin-bottom: 15px;
+    }
+    h1 {
+      color: #ff00cc;
+      margin: 10px 0;
+    }
+    .social-links {
+      margin-top: 20px;
+    }
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.3s;
+    }
+    .social-links a:hover {
+      background: rgba(255,255,255,0.3);
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    
-    <!-- Logo -->
-    <img src="logo.png" alt="Revolvidas Radio" class="logo">
+  <div class="card">
+    <img src="logo.png" alt="Revolvidas Radio">
+    <p>🔥 “HITS QUE NUNCA MUEREN”</p>
+    <h1>revolvidas radio</h1>
+    <p>Clásicos de los 80’s y 90’s en vivo 🎶</p>
+    <p>Escucha la mejor música</p>
 
-    <!-- Botón de Radio -->
-    <div class="radio-container">
-      <button class="radio-btn" onclick="toggleRadio()">Reproducir</button>
+    <!-- Botón de radio -->
+    <div>
+      <button onclick="toggleRadio()">▶️ Escuchar</button>
       <audio id="radioPlayer" preload="none">
         <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
     </div>
 
-    <!-- Redes Sociales -->
+    <!-- Links redes -->
     <div class="social-links">
       <a href="https://www.facebook.com/revolvidas" target="_blank">Facebook</a>
       <a href="https://www.youtube.com/@djwalydorado" target="_blank">YouTube</a>
@@ -32,15 +74,12 @@
   <script>
     let playing = false;
     const player = document.getElementById('radioPlayer');
-    const btn = document.querySelector('.radio-btn');
 
     function toggleRadio() {
       if (playing) {
         player.pause();
-        btn.textContent = 'Reproducir';
       } else {
         player.play();
-        btn.textContent = 'Pausar';
       }
       playing = !playing;
     }
