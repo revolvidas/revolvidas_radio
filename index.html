@@ -4,38 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
-  <!-- Forzar recarga del CSS con versión -->
-  <link rel="stylesheet" href="style.css?v=2">
-  <!-- Fuente ochentera -->
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 </head>
+  
 <body>
   <div class="container">
     <!-- Logo -->
     <img src="img/logo.png" alt="Revolvidas Radio Logo" class="logo">
 
     <!-- Eslogan -->
-    <h2>HITS QUE NUNCA MUEREN</h2>
+    <h2> HITS QUE NUNCA MUEREN </h2>
+ 
+ 
 
-    <!-- Botón Reproductor -->
+    <!-- Botón Reproducir -->
     <div class="radio-container">
       <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
       <audio id="radioPlayer" preload="none">
-        <source src="https://radio-proxy-wb2.onrender.com/radio" type="audio/mpeg">
+        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
     </div>
 
     <!-- Botones sociales -->
-    <div>
-      <a href="https://facebook.com" class="btn facebook-btn" target="_blank">Facebook</a>
-      <a href="https://youtube.com" class="btn youtube-btn" target="_blank">Youtube</a>
-      <a href="#" class="btn remixes-btn">Remixes</a>
-    </div>
-
-    <p>Clásicos de los 80’s y 90’s en vivo 🎶 <br> Escucha la mejor música retro 24/7.</p>
+    <a href="https://facebook.com" class="btn facebook-btn" target="_blank">Facebook</a>
+    <a href="https://youtube.com" class="btn youtube-btn" target="_blank">Youtube</a>
+    <a href="#" class="btn remixes-btn">Remixes</a>
   </div>
-
+   <p>Clásicos de los 80’s y 90’s en vivo 🎶<br>
+       Escucha la mejor música retro 24/7.</p>
   <script>
     function toggleRadio() {
       const player = document.getElementById("radioPlayer");
