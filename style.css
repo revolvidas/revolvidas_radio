@@ -81,11 +81,20 @@ p {
   background: linear-gradient(to right, #00ccff, #0027ff);
 }
 
-/* Loader */
-.loading {
+/* Loader animado */
+#loader {
   display: none;
+  margin-top: 15px;
   font-size: 14px;
-  margin-top: 10px;
+  font-family: 'Press Start 2P', cursive;
   color: #fff;
-  font-style: italic;
+  animation: blink 1s infinite;
+  text-align: center;
 }
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
