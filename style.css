@@ -1,93 +1,78 @@
-/* Fuente global */
 body {
-  font-family: 'Press Start 2P', cursive;
-  background: linear-gradient(135deg, #0f0f0f, #1a0033);
-  color: #fff;
-  text-align: center;
   margin: 0;
   padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  background: url("rm383.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
 }
 
-/* Contenedor principal */
 .container {
-  max-width: 800px;
-  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 20px;
+  min-height: 100vh;
 }
 
-/* Logo */
 .logo {
-  max-width: 250px;
+  max-width: 180px;
   margin: 20px auto;
   display: block;
 }
 
-/* Eslogan */
-h2 {
-  font-size: 14px;
-  color: #ff00cc;
-  text-shadow: 2px 2px 4px #000;
+h1 {
+  color: #ff00ff;
+  font-size: 22px;
   margin-bottom: 20px;
 }
 
-/* Botón de radio */
-.radio-btn {
-  font-size: 12px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  background: #00ffea;
-  color: #000;
-  cursor: pointer;
+.radio-container {
   margin: 20px 0;
-  box-shadow: 0px 0px 10px #00ffea, 0px 0px 20px #00ffea inset;
-  transition: 0.3s;
-}
-.radio-btn:hover {
-  background: #ff00cc;
-  color: #fff;
-  box-shadow: 0px 0px 12px #ff00cc, 0px 0px 25px #ff00cc inset;
 }
 
-/* Botones sociales */
 .btn {
   display: inline-block;
   margin: 10px;
-  padding: 10px 15px;
-  font-size: 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: #222;
+  color: white;
   text-decoration: none;
-  border-radius: 6px;
+  font-size: 14px;
+  border: 2px solid #ff00ff;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-.facebook-btn {
-  background: #1877f2;
-  color: #fff;
-}
-.facebook-btn:hover {
-  background: #145dbf;
+.btn:hover {
+  background: #ff00ff;
+  color: black;
 }
 
-.youtube-btn {
-  background: #ff0000;
-  color: #fff;
-}
-.youtube-btn:hover {
-  background: #cc0000;
+.radio-btn {
+  background: #ff00ff;
+  color: black;
+  font-weight: bold;
 }
 
-.remixes-btn {
-  background: #ff9800;
-  color: #fff;
-}
-.remixes-btn:hover {
-  background: #e68900;
+/* Loader animado */
+.loader {
+  margin: 20px auto;
+  border: 6px solid #ccc;
+  border-top: 6px solid #ff00ff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
 }
 
-/* Texto final */
-p {
-  font-size: 10px;
-  color: #ddd;
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.tagline {
   margin-top: 30px;
-  line-height: 1.6;
+  font-size: 12px;
+  line-height: 1.5;
 }
