@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Fuente ochentera -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
@@ -16,16 +14,14 @@
     <!-- Eslogan -->
     <h2>HITS QUE NUNCA MUEREN</h2>
 
-    <!-- Botón Reproducir -->
+    <!-- Botón Reproducción -->
     <div class="radio-container">
       <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
+      <div id="loading" class="loading">🎵 Cargando<span id="dots"></span></div>
       <audio id="radioPlayer" preload="none">
-        <source src="https://radio-proxy.ice2.onennder.com/radio" type="audio/mpeg">
+        <source src="https://radio-proxy.wo1.ovh/encoder/1234/stream" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
-
-      <!-- Cargando -->
-      <div id="loading" class="loading">🎵 Cargando<span id="dots"></span></div>
     </div>
 
     <!-- Botones sociales -->
@@ -35,9 +31,7 @@
       <a href="#" class="btn remixes-btn">Remixes</a>
     </div>
 
-    <!-- Texto final -->
-    <p>Clásicos de los 80’s y 90’s en vivo 🎶<br>
-    Escucha la mejor música retro 24/7.</p>
+    <p>Clásicos de los 80’s y 90’s en vivo 🎶<br>Escucha la mejor música retro 24/7.</p>
   </div>
 
   <script>
@@ -50,28 +44,33 @@
     const dots = document.getElementById("dots");
 
     if (player.paused) {
-      loading.style.display = "block"; // Mostrar cargando
+      loading.style.display = "block"; // Mostrar "Cargando"
 
       // Animación de puntitos
       let dotCount = 0;
       dotsInterval = setInterval(() => {
-        dotCount = (dotCount + 1) % 4; // 0,1,2,3
+        dotCount = (dotCount + 1) % 4;
         dots.textContent = ".".repeat(dotCount);
       }, 500);
 
       player.play().then(() => {
         playBtn.textContent = "⏸ Pausar";
-        loading.style.display = "none";
-        clearInterval(dotsInterval);
       }).catch(error => {
         console.error("Error al reproducir:", error);
         loading.style.display = "none";
         clearInterval(dotsInterval);
       });
+
     } else {
       player.pause();
       playBtn.textContent = "▶ Reproducir";
     }
+
+    // Cuando realmente empieza a sonar:
+    player.addEventListener("playing", () => {
+      loading.style.display = "none";
+      clearInterval(dotsInterval);
+    });
   }
   </script>
 </body>
