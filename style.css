@@ -79,38 +79,39 @@ h2 {
     background: linear-gradient(to right, #00c6ff, #0072ff);
 }
 /* Control de volumen */
-.volume-control {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 12px;
+.volume-container {
+  margin: 20px 0;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
 }
 
-.volume-control input[type=range] {
-    -webkit-appearance: none;
-    width: 80%;
-    height: 8px;
-    border-radius: 5px;
-    background: linear-gradient(to right, #ff0099, #6600ff);
-    outline: none;
-    cursor: pointer;
+#volumeControl {
+  width: 100%;
+  margin-top: 10px;
+  -webkit-appearance: none;
+  background: #444;
+  height: 8px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
 }
 
-.volume-control input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid #6600ff;
-    cursor: pointer;
+#volumeControl::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff00ff;
+  cursor: pointer;
+  border: 2px solid white;
 }
 
-.volume-control input[type=range]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid #6600ff;
-    cursor: pointer;
+#volumeControl::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff00ff;
+  cursor: pointer;
+  border: 2px solid white;
 }
-
