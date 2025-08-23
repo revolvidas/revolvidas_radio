@@ -4,122 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: url("fondo.jpg?v=2") no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-
-    .logo {
-      margin-top: 20px;
-    }
-
-    .logo img {
-      max-width: 200px;
-      height: auto;
-    }
-
-    h1 {
-      font-size: 32px;
-      margin: 10px 0;
-      color: #8e2de2; /* morado */
-    }
-
-    .radio-container {
-      margin: 30px 0;
-    }
-
-    .radio-btn {
-      background: #8e2de2; /* morado sólido */
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-      padding: 14px 30px;
-      border: none;
-      border-radius: 40px;
-      cursor: pointer;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-    }
-
-    .radio-btn:hover {
-      transform: scale(1.05);
-      background: #4a00e0;
-    }
-
-    .radio-btn:active {
-      transform: scale(0.95);
-    }
-
-    .social-links {
-      margin: 30px 0;
-    }
-
-    .social-links a {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 12px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      color: white;
-      background: linear-gradient(135deg, #8e2de2, #4a00e0);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
-    }
-
-    .social-links a:hover {
-      transform: scale(1.1);
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 16px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="logo">
-    <img src="logo.png?v=2" alt="Revolvidas Radio">
+  <div class="container">
+    <img src="img/logo.png" alt="Revolvidas Radio Logo" class="logo">
+
+    <h2>HITS QUE NUNCA MUEREN</h2>
+
+    <div class="radio-container">
+      <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
+      <audio id="radioPlayer" preload="none">
+        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+      </audio>
+    </div>
+
+    <div class="social-links">
+      <a href="https://www.facebook.com/revolvidas" target="_blank">Facebook</a>
+      <a href="https://www.youtube.com/@djwalydorado" target="_blank">YouTube</a>
+      <a href="https://www.mixcloud.com/walter-dorado/" target="_blank">Remixes</a>
+    </div>
+
+    <p>Clásicos de los 80’s y 90’s en vivo 🎶<br>Escucha la mejor música retro 24/7.</p>
   </div>
-
-  <h1>Revolvidas Radio</h1>
-
-  <div class="radio-container">
-    <button class="radio-btn" onclick="toggleRadio()">Reproducir</button>
-    <audio id="radioPlayer" preload="none">
-      <source src="https://radio-proxy-wb2.onrender.com/radio?v=2" type="audio/mpeg">
-      Tu navegador no soporta audio HTML5.
-    </audio>
-  </div>
-
-  <div class="social-links">
-    <a href="https://www.facebook.com/revolvidas" target="_blank">Facebook</a>
-    <a href="https://www.youtube.com/@djwalydorado" target="_blank">YouTube</a>
-    <a href="https://www.mixcloud.com/walter-dorado/" target="_blank">Mixcloud</a>
-  </div>
-
-  <footer>
-    🎶 Clásicos de los 80’s y 90’s en vivo · Escucha la mejor música retro 24/7
-  </footer>
 
   <script>
     let playing = false;
     const player = document.getElementById('radioPlayer');
-    const btn = document.querySelector('.radio-btn');
+    const btn = document.getElementById('playBtn');
 
     function toggleRadio() {
       if (playing) {
         player.pause();
-        btn.textContent = 'Reproducir';
+        btn.textContent = '▶ Reproducir';
       } else {
         player.play();
-        btn.textContent = 'Pausar';
+        btn.textContent = '⏸ Pausar';
       }
       playing = !playing;
     }
