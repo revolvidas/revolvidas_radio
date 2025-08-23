@@ -4,50 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=4">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
 </head>
-  
 <body>
   <div class="container">
-    <!-- Logo -->
-    <img src="img/logo.png" alt="Revolvidas Radio Logo" class="logo">
-
-    <!-- Eslogan -->
-    <h2> HITS QUE NUNCA MUEREN  </h2>
-
-
+    <img src="logo.png" alt="Revolvidas Radio" class="logo">
+    <h1>Revolvidas Radio</h1>
 
     <!-- Botón Reproducir -->
     <div class="radio-container">
-      <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
+      <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">▶ Reproducir</button>
       <audio id="radioPlayer" preload="none">
-        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
+        <source src="https://radio-proxy-inb2.onrender.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
     </div>
 
-    <!-- Botones sociales -->
-    <a href="https://facebook.com" class="btn facebook-btn" target="_blank">Facebook</a>
-    <a href="https://youtube.com" class="btn youtube-btn" target="_blank">Youtube</a>
-    <a href="#" class="btn remixes-btn">Remixes</a>
-  </div>
-   <p>Clásicos de los 80’s y 90’s en vivo 🎶<br>
-       Escucha la mejor música retro 24/7.</p>
-  <script>
-    function toggleRadio() {
-      const player = document.getElementById("radioPlayer");
-      const playBtn = document.getElementById("playBtn");
+    <!-- Loader animado -->
+    <div id="loader" class="loader" style="display: none;"></div>
 
+    <div class="social-links">
+      <a href="https://www.facebook.com/revolvidas" target="_blank" class="btn">Facebook</a>
+      <a href="https://www.youtube.com/@djwalydorado" target="_blank" class="btn">YouTube</a>
+      <a href="https://www.mixcloud.com/walter-dorado/" target="_blank" class="btn">Remix</a>
+    </div>
+
+    <p class="tagline">Clásicos de los 80’s y 90’s en vivo 🎶<br>Escucha la mejor música retro 24/7.</p>
+  </div>
+
+  <script>
+    const player = document.getElementById("radioPlayer");
+    const playbtn = document.getElementById("playbtn");
+    const loader = document.getElementById("loader");
+
+    function toggleRadio() {
       if (player.paused) {
-        player.play();
-        playBtn.textContent = "⏸ Pausar";
+        loader.style.display = "block"; // mostrar cargando
+        player.play().then(() => {
+          loader.style.display = "none"; // ocultar cargando al iniciar
+          playbtn.textContent = "⏸ Pausar";
+        }).catch(err => {
+          loader.style.display = "none"; // ocultar si hay error
+          console.error("Error al reproducir:", err);
+        });
       } else {
         player.pause();
-        playBtn.textContent = "▶ Reproducir";
+        playbtn.textContent = "▶ Reproducir";
       }
     }
+
+    // Ocultar loader si ya empezó a sonar
+    player.addEventListener("playing", () => {
+      loader.style.display = "none";
+    });
   </script>
 </body>
 </html>
