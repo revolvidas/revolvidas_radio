@@ -11,47 +11,39 @@
     <!-- Logo -->
     <img src="img/logo.png" alt="Revolvidas Radio Logo" class="logo">
 
-    <!-- Slogan -->
-    <p class="slogan">🔥 HITS QUE NUNCA MUEREN 🔥</p>
+    <!-- Eslogan -->
+    <h2>🔥 HITS QUE NUNCA MUEREN 🔥</h2>
+    <h1>revolvidas<br>radio</h1>
+    <p>Clásicos de los 80’s y 90’s en vivo 🎶<br>
+       Escucha la mejor música retro 24/7.</p>
 
-    <!-- Título -->
-    <h1 class="title">revolvidas<br>radio</h1>
-
-    <!-- Descripción -->
-    <p class="description">
-      Clásicos de los 80’s y 90’s en vivo 🎶 <br>
-      Escucha la mejor música retro 24/7.
-    </p>
-
-    <!-- Botón de radio -->
+    <!-- Botón Reproducir -->
     <div class="radio-container">
-      <button class="radio-btn" onclick="toggleRadio()">▶ Reproducir</button>
+      <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
       <audio id="radioPlayer" preload="none">
         <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
     </div>
 
-    <!-- Botones redes -->
-    <a href="https://www.facebook.com/revolvidas" class="btn facebook">Facebook</a>
-    <a href="https://www.youtube.com/@djwalydorado" class="btn youtube">Youtube</a>
-    <a href="https://www.mixcloud.com/walter-dorado/" class="btn remixes">Remixes</a>
+    <!-- Botones sociales -->
+    <a href="https://facebook.com" class="btn facebook-btn" target="_blank">Facebook</a>
+    <a href="https://youtube.com" class="btn youtube-btn" target="_blank">Youtube</a>
+    <a href="#" class="btn remixes-btn">Remixes</a>
   </div>
 
   <script>
-    let playing = false;
-    const player = document.getElementById('radioPlayer');
-    const btn = document.querySelector('.radio-btn');
-
     function toggleRadio() {
-      if (playing) {
-        player.pause();
-        btn.textContent = '▶ Reproducir';
-      } else {
+      const player = document.getElementById("radioPlayer");
+      const playBtn = document.getElementById("playBtn");
+
+      if (player.paused) {
         player.play();
-        btn.textContent = '⏸ Pausar';
+        playBtn.textContent = "⏸ Pausar";
+      } else {
+        player.pause();
+        playBtn.textContent = "▶ Reproducir";
       }
-      playing = !playing;
     }
   </script>
 </body>
