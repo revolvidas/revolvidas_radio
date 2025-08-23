@@ -27,9 +27,11 @@ body {
 
 /* Títulos */
 h1 {
-  font-size: 40px;
-  font-weight: bold;
-  color: #8a2be2;
+  font-size: 48px;
+  font-weight: normal;
+  font-family: 'Monoton', cursive;  /* Fuente estilo logo retro */
+  color: #a020f0; /* Un morado neón, puedes ajustar */
+  text-shadow: 0 0 5px #a020f0, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
   margin: 10px 0;
 }
 
