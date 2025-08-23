@@ -89,3 +89,12 @@ p {
 .remixes-btn {
   background: linear-gradient(to right, #00c6ff, #0072ff);
 }
+
+/* Cargando animado */
+.loading {
+  display: none;
+  margin-top: 10px;
+  font-size: 14px;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+}
