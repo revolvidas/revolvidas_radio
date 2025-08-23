@@ -37,9 +37,10 @@ h1 {
 }
 
 h2 {
-  font-size: 18px;
-  font-weight: normal;
-  margin-bottom: 10px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  color: #a64dff; /* morado retro */
+  margin-bottom: 15px;
 }
 
 p {
