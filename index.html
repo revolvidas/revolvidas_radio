@@ -23,11 +23,37 @@
       Escucha la mejor música retro 24/7.
     </p>
 
-    <!-- Botones -->
-    <a href="#" class="btn live">▶ Escuchar en Vivo</a>
-    <a href="#" class="btn facebook">Facebook</a>
-    <a href="#" class="btn youtube">Youtube</a>
-    <a href="#" class="btn remixes">Remixes</a>
+    <!-- Botón de radio -->
+    <div class="radio-container">
+      <button class="radio-btn" onclick="toggleRadio()">▶ Reproducir</button>
+      <audio id="radioPlayer" preload="none">
+        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+      </audio>
+    </div>
+
+    <!-- Botones redes -->
+    <a href="https://www.facebook.com/revolvidas" class="btn facebook">Facebook</a>
+    <a href="https://www.youtube.com/@djwalydorado" class="btn youtube">Youtube</a>
+    <a href="https://www.mixcloud.com/walter-dorado/" class="btn remixes">Remixes</a>
   </div>
+
+  <script>
+    let playing = false;
+    const player = document.getElementById('radioPlayer');
+    const btn = document.querySelector('.radio-btn');
+
+    function toggleRadio() {
+      if (playing) {
+        player.pause();
+        btn.textContent = '▶ Reproducir';
+      } else {
+        player.play();
+        btn.textContent = '⏸ Pausar';
+      }
+      playing = !playing;
+    }
+  </script>
 </body>
 </html>
+
