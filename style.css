@@ -14,7 +14,7 @@ body {
   margin: 0 auto;
   text-align: center;
   padding: 20px;
-  background: rgba(0, 0, 50, 0.7); /* fondo oscuro semi-transparente */
+  background: rgba(0, 0, 50, 0.7);
   border-radius: 20px;
   margin-top: 30px;
 }
@@ -44,10 +44,37 @@ body {
 .description {
   font-size: 16px;
   color: #ddd;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-/* Botones */
+/* Botón de radio */
+.radio-container {
+  margin: 20px 0;
+}
+
+.radio-btn {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.radio-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #4a00e0, #8e2de2);
+}
+
+.radio-btn:active {
+  transform: scale(0.95);
+}
+
+/* Botones redes */
 .btn {
   display: block;
   text-decoration: none;
@@ -63,12 +90,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Colores de los botones */
-.live {
-  background: linear-gradient(to right, #ff00cc, #ff66ff);
-  color: white;
-}
-
+/* Colores botones */
 .facebook {
   background: linear-gradient(to right, #3b5998, #8b9dc3);
   color: white;
