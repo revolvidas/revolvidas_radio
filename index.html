@@ -1,89 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvidas Radio</title>
   <style>
-    /* Estilos generales */
+    /* Fuente */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1a1a1a, #333);
+      font-family: 'Poppins', sans-serif;
+      background: #1a00e0;
       color: white;
       text-align: center;
     }
 
-    header {
-      padding: 20px;
+    .card {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 30px;
+      background: linear-gradient(145deg, rgba(20,20,50,0.9), rgba(40,0,80,0.9));
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
     }
 
-    header img {
-      max-width: 200px;
+    .card img {
+      width: 120px;
+      margin-bottom: 15px;
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 2.2em;
+      font-weight: 900;
+      color: #ff00cc;
       margin: 10px 0;
+      text-transform: lowercase;
     }
 
     p {
-      font-size: 1.2em;
-      margin: 10px 0 30px;
+      font-size: 1em;
+      color: #ddd;
+      margin-bottom: 20px;
     }
 
-    /* Botón de radio */
-    .radio-container {
-      text-align: center;
-      margin: 30px 0;
-    }
-
-    .radio-btn {
-      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+    .btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #ff0080, #ff8c00);
       color: white;
-      font-size: 20px;
+      padding: 15px 20px;
+      margin: 12px 0;
+      border-radius: 50px;
+      text-decoration: none;
       font-weight: bold;
-      padding: 14px 30px;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn.purple {
+      background: linear-gradient(90deg, #4a00e0, #8e2de2);
+    }
+
+    .btn.red {
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+    }
+
+    .btn.dark {
+      background: linear-gradient(90deg, #232526, #414345);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.8em;
+      color: #bbb;
+    }
+
+    /* Botón especial para radio */
+    .radio-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border-radius: 50px;
       border: none;
-      border-radius: 40px;
+      font-weight: bold;
+      font-size: 1em;
       cursor: pointer;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
+      background: linear-gradient(90deg, #ff00cc, #3333ff);
+      color: white;
+      transition: 0.3s;
     }
 
     .radio-btn:hover {
       transform: scale(1.05);
-      background: linear-gradient(135deg, #4a00e0, #8e2de2);
     }
 
-    .radio-btn:active {
-      transform: scale(0.95);
-    }
-
-    footer {
-      margin-top: 50px;
-      padding: 20px;
-      background: #111;
-      font-size: 0.9em;
-      color: #aaa;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <img src="img/logo.png" alt="Logo Revolvidas" />
-    <h1>Revolvidas Radio</h1>
-    <p>Escucha en vivo nuestra transmisión</p>
-  </header>
+  <div class="card">
+    <img src="img/logo.png" alt="Revolvidas Radio Logo">
+    <p>🔥 “HITS QUE NUNCA MUEREN”</p>
+    <h1>revolvidas radio</h1>
+    <p>Clásicos de los 80’s y 90’s en vivo 🎶<br> Escucha la mejor música retro 24/7.</p>
 
-  <!-- Botón de radio -->
-  <div class="radio-container">
-    <button class="radio-btn" onclick="toggleRadio()">Reproducir</button>
-
+    <!-- Botón de Radio -->
+    <button class="radio-btn" onclick="toggleRadio()">▶ Escuchar en Vivo</button>
     <audio id="radioPlayer" preload="none">
       <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
       Tu navegador no soporta audio HTML5.
     </audio>
+
+    <!-- Links -->
+    <a href="https://facebook.com" target="_blank" class="btn purple">Facebook <span>📘</span></a>
+    <a href="https://youtube.com" target="_blank" class="btn red">YouTube <span>▶</span></a>
+    <a href="#" target="_blank" class="btn dark">Remixes <span>🎵</span></a>
   </div>
 
   <footer>
@@ -98,10 +133,10 @@
     function toggleRadio() {
       if (playing) {
         player.pause();
-        btn.textContent = 'Reproducir';
+        btn.textContent = '▶ Escuchar en Vivo';
       } else {
         player.play();
-        btn.textContent = 'Pausar';
+        btn.textContent = '⏸ Pausar';
       }
       playing = !playing;
     }
