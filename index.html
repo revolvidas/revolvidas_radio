@@ -1,87 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Revolvid@s Radio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Online</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Logo -->
-    <img src="img/logo.png" alt="Revolvid@s Radio Logo" class="logo" />
+    <div class="container">
+        <img src="img/logo.png" alt="Logo" class="logo">
+        <h1>Radio Online</h1>
+        
+        <!-- LED Equalizer -->
+        <div class="equalizer" id="equalizer">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
 
-    <!-- Slogan -->
-    <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
-
-    <!-- Botón Reproducción -->
-    <div class="radio-container">
-      <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">Reproducir</button>
-      <audio id="radioplayer" preload="none">
-        <!-- Usa exactamente la URL de tu stream -->
-        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg" />
-        Tu navegador no soporta audio HTML5.
-      </audio>
+        <button id="playButton">▶ Reproducir</button>
+        <p id="status">Esperando reproducción...</p>
+        <audio id="audio" preload="none">
+            <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
+        </audio>
     </div>
 
-    <!-- Botones sociales -->
-    <div class="socials">
-      <a href="https://www.facebook.com/revolvidas" class="btn facebook-btn" target="_blank">Facebook</a>
-      <a href="https://www.youtube.com/@edalyadorado" class="btn youtube-btn" target="_blank">YouTube</a>
-      <a href="https://www.mixcloud.com/walter-dorado" class="btn remixes-btn" target="_blank">Mixcloud</a>
-    </div>
-  </div>
+    <script>
+        const playButton = document.getElementById('playButton');
+        const audio = document.getElementById('audio');
+        const status = document.getElementById('status');
+        const equalizer = document.getElementById('equalizer');
 
-  <p class="footer">
-    🎶 Clásicos de los 80's y 90's en vivo 🎶<br />
-    Escucha la mejor música retro 24/7 🔥 📻
-  </p>
+        playButton.addEventListener('click', () => {
+            status.textContent = "Cargando...";
+            playButton.disabled = true;
 
-  <script>
-    // --- Solo lógica JS: no modifica estilos ni estructura ---
-    document.addEventListener("DOMContentLoaded", () => {
-      const player = document.getElementById("radioplayer");
-      const playbtn = document.getElementById("playbtn");
+            audio.play().then(() => {
+                status.textContent = "Reproduciendo...";
+                playButton.textContent = "⏸ Pausar";
+                playButton.disabled = false;
+                equalizer.classList.add('active');
+            }).catch(error => {
+                status.textContent = "Error al reproducir";
+                playButton.disabled = false;
+            });
+        });
 
-      // Actualiza el texto según eventos del audio
-      player.addEventListener("playing", () => { playbtn.textContent = "Pausar"; });
-      player.addEventListener("pause",   () => { playbtn.textContent = "Reproducir"; });
-      player.addEventListener("waiting", () => { if (!player.paused) playbtn.textContent = "Cargando..."; });
-      player.addEventListener("stalled", () => { if (!player.paused) playbtn.textContent = "Cargando..."; });
-      player.addEventListener("canplay", () => { if (!player.paused) playbtn.textContent = "Pausar"; });
-      player.addEventListener("error",   () => { playbtn.textContent = "Reproducir"; console.error("Audio error"); });
-    });
-
-    function toggleRadio() {
-      const player  = document.getElementById("radioplayer");
-      const playbtn = document.getElementById("playbtn");
-
-      if (player.paused) {
-        // mostrar cargando y forzar recarga del stream
-        playbtn.textContent = "Cargando...";
-        try { player.load(); } catch (e) {}
-
-        // timeout por si no arranca
-        const timeout = setTimeout(() => {
-          if (player.paused) {
-            playbtn.textContent = "Reproducir";
-            console.error("Tiempo de carga agotado");
-          }
-        }, 12000); // 12s
-
-        // intentar play() (promise en navegadores modernos)
-        const p = player.play();
-        if (p && typeof p.then === "function") {
-          p.then(() => clearTimeout(timeout))
-           .catch(err => { clearTimeout(timeout); playbtn.textContent = "Reproducir"; console.error("Play error:", err); });
-        }
-      } else {
-        player.pause();
-        // 'pause' evento restablecerá texto a "Reproducir"
-      }
-    }
-  </script>
+        playButton.addEventListener('click', () => {
+            if (!audio.paused) {
+                audio.pause();
+                playButton.textContent = "▶ Reproducir";
+                equalizer.classList.remove('active');
+                status.textContent = "Pausado";
+            } else {
+                audio.play();
+                playButton.textContent = "⏸ Pausar";
+                equalizer.classList.add('active');
+                status.textContent = "Reproduciendo...";
+            }
+        });
+    </script>
 </body>
 </html>
 
