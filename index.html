@@ -37,19 +37,39 @@
   <p>🎶 Clásicos de los 80’s y 90’s en vivo 🎶<br>
   Escucha la mejor música retro 24/7 🎧</p>
 
-  <script>
-    function toggleRadio() {
-      const player = document.getElementById("radioplayer");
-      const playbtn = document.getElementById("playbtn");
+<script>
+  const STREAM = "https://radio-proxy-iweb2.onrender.com/radio";
+  const player  = document.getElementById('radioPlayer');
+  const playBtn = document.getElementById('playBtn');
 
-      if (player.paused) {
-        player.play();
-        playbtn.textContent = "⏸ Pausar";
-      } else {
-        player.pause();
-        playbtn.textContent = "▶ Reproducir";
+  // Cuando el audio está listo y sonando
+  player.addEventListener('playing', () => {
+    playBtn.textContent = "Ⅱ Pausar";
+  });
+
+  // Si el audio entra en buffering
+  player.addEventListener('waiting', () => {
+    playBtn.textContent = "Cargando...";
+  });
+
+  // Función para alternar reproducir/pausar
+  async function toggleRadio() {
+    if (player.paused || player.readyState === 0) {
+      if (!player.src) {
+        player.src = STREAM + "?t=" + Date.now();
       }
+      playBtn.textContent = "Cargando...";
+      try {
+        await player.play();
+      } catch (e) {
+        playBtn.textContent = "▶ Reproducir"; // si falla, vuelve al normal
+      }
+    } else {
+      player.pause();
+      playBtn.textContent = "▶ Reproducir";
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
