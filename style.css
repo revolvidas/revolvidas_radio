@@ -71,7 +71,7 @@ body {
 }
 
 .titulo {
-  font-size: 12px;   /* aquí ajustas el tamaño */
+  font-size: 8px;   /* aquí ajustas el tamaño */
   font-family: 'Press Start 2P', cursive; /* mantiene la tipografía retro */
   margin: 15px 0;
 }
