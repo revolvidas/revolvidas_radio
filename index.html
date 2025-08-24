@@ -3,37 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revolvid@s Radio</title>
+  <title>Revolvidas Radio</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <div class="container">
     <!-- Logo -->
-    <img src="img/logo.png" alt="Revolvid@s Radio Logo" class="logo">
+    <img src="img/logo.png" alt="Revolvidas Radio Logo" class="logo">
 
-    <!-- Slogan -->
-    <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
+    <!-- Eslogan -->
+    <h2>🔥 HITS QUE NUNCA MUEREN 🔥</h2>
 
     <!-- Botón Reproducir -->
     <div class="radio-container">
       <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">▶ Reproducir</button>
       <audio id="radioplayer" preload="none">
-        <source src="https://radio-proxy-iw82.onrender.com/radio" type="audio/mpeg">
+        <!-- 🔊 Aquí está el cambio importante -->
+        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
     </div>
 
     <!-- Botones sociales -->
-    <div class="socials">
-      <a href="https://www.facebook.com/revolvidas" class="btn facebook-btn" target="_blank">Facebook</a>
-      <a href="https://www.youtube.com/@djwalydorado" class="btn youtube-btn" target="_blank">YouTube</a>
-      <a href="https://www.mixcloud.com/walter-dorado/" class="btn remixes-btn" target="_blank">Mixcloud</a>
+    <div class="social">
+      <a href="https://facebook.com" class="btn facebook-btn" target="_blank">Facebook</a>
+      <a href="https://youtube.com" class="btn youtube-btn" target="_blank">Youtube</a>
+      <a href="#" class="btn remixes-btn">Remixes</a>
     </div>
   </div>
 
-  <p class="footer">🎶 Clásicos de los 80’s y 90’s en vivo 🎶<br>
-    Escucha la mejor música retro 24/7 💿</p>
+  <p>🎶 Clásicos de los 80’s y 90’s en vivo 🎶<br>
+  Escucha la mejor música retro 24/7 🎧</p>
 
   <script>
     function toggleRadio() {
