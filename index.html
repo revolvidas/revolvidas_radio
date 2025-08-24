@@ -2,54 +2,82 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revolvidas Radio</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>Radio RevolvidAS Retro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-top: 50px;
+      font-size: 2.5em;
+      color: #ffcc00;
+    }
+    #player-container {
+      margin-top: 80px;
+    }
+    button {
+      background: #ffcc00;
+      border: none;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      font-size: 2em;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ffaa00;
+      transform: scale(1.1);
+    }
+    p {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #bbb;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Logo -->
-    <img src="img/logo.png" alt="Revolvidas Radio Logo" class="logo">
-
-    <!-- Eslogan -->
-    <h2>HITS QUE NUNCA MUEREN 🎵</h2>
-
-    <!-- Botón Reproducir -->
-    <div class="radio-container">
-      <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">▶ Reproducir</button>
-      <audio id="radioplayer" preload="none">
-        <source src="https://radio-proxy-imb2.onrender.com/radio" type="audio/mpeg">
-        Tu navegador no soporta audio HTML5.
-      </audio>
-    </div>
-
-    <!-- Botones sociales -->
-    <div>
-      <a href="https://facebook.com" class="btn facebook-btn" target="_blank">Facebook</a>
-      <a href="https://youtube.com" class="btn youtube-btn" target="_blank">YouTube</a>
-      <a href="#" class="btn remixes-btn">Remix</a>
-    </div>
-
-    <p>
-      Clásicos de los 80’s y 90’s en vivo <br>
-      Escucha la mejor música retro 24/7.
-    </p>
+  <h1>🎶 RevolvidAS Retro 🎶</h1>
+  <div id="player-container">
+    <button id="playBtn">▶️</button>
+    <p id="status">Presiona para escuchar</p>
   </div>
 
-  <script>
-    function toggleRadio() {
-      const player = document.getElementById("radioplayer");
-      const playbtn = document.getElementById("playbtn");
+  <audio id="player" preload="none">
+    <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
+  </audio>
 
-      if (player.paused) {
-        player.play();
-        playbtn.textContent = "⏸ Pausar";
+  <script>
+    const playBtn = document.getElementById("playBtn");
+    const player = document.getElementById("player");
+    const statusText = document.getElementById("status");
+
+    let isPlaying = false;
+
+    playBtn.addEventListener("click", () => {
+      if (!isPlaying) {
+        player.play().then(() => {
+          isPlaying = true;
+          playBtn.textContent = "⏸️";
+          statusText.textContent = "Radio en vivo 🔊";
+        }).catch(err => {
+          console.log("Error al reproducir:", err);
+          statusText.textContent = "Error: toca de nuevo ▶️";
+        });
       } else {
         player.pause();
-        playbtn.textContent = "▶ Reproducir";
+        isPlaying = false;
+        playBtn.textContent = "▶️";
+        statusText.textContent = "Radio en pausa ⏸️";
       }
-    }
+    });
   </script>
 </body>
 </html>
+
