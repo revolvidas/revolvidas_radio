@@ -1,81 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Player</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revolvid@s Radio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <div class="container">
+    <!-- Logo -->
+    <img src="img/logo.png" alt="Revolvid@s Radio Logo" class="logo" />
+
+    <!-- Slogan -->
+    <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
+
+    <!-- Botón Reproducción -->
     <div class="radio-container">
-        <h1 class="radio-title">Mi Radio</h1>
-        <button id="playbtn" class="play-button">▶ Reproducir</button>
-        <!-- LED de estado -->
-        <div class="led" id="play-led" aria-hidden="true"></div>
-        <audio id="radioplayer" preload="none">
-            <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
-            Tu navegador no soporta la reproducción de audio.
-        </audio>
+      <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">▶ Reproducir</button>
+      <audio id="radioplayer" preload="none">
+        <source src="https://radio-proxy-wib2.onrender.com/radio" type="audio/mpeg" />
+        Tu navegador no soporta audio HTML5.
+      </audio>
+      <!-- LED Animado -->
+      <div id="led" class="led"></div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const player = document.getElementById("radioplayer");
-            const playbtn = document.getElementById("playbtn");
-            const led = document.getElementById("play-led");
+    <!-- Botones sociales -->
+    <div class="socials">
+      <a href="https://www.facebook.com/revolvidas" class="btn facebook-btn" target="_blank">Facebook</a>
+      <a href="https://www.youtube.com/@edalyadorado" class="btn youtube-btn" target="_blank">Youtube</a>
+      <a href="https://www.mixcloud.com/walter-dorado/" class="btn remixes-btn" target="_blank">Remixes</a>
+    </div>
+  </div>
 
-            function toggleRadio() {
-                if (player.paused) {
-                    player.play().then(() => {
-                        playbtn.textContent = "⏸ Pausar";
-                        led.classList.remove("waiting");
-                        led.classList.add("on");
-                    }).catch(err => {
-                        console.error("Error al reproducir:", err);
-                        playbtn.textContent = "▶ Reproducir";
-                        led.classList.remove("on", "waiting");
-                    });
+  <p class="footer">
+    ✨ Clásicos de los 80's y 90's en vivo 🎶🔥<br />
+    Escucha la mejor música retro 24/7 📻
+  </p>
 
-                    // Mientras carga
-                    playbtn.textContent = "Cargando...";
-                    led.classList.add("waiting");
-                } else {
-                    player.pause();
-                    playbtn.textContent = "▶ Reproducir";
-                    led.classList.remove("on", "waiting");
-                }
-            }
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const player = document.getElementById("radioplayer");
+  const playbtn = document.getElementById("playbtn");
+  const led = document.getElementById("led");
 
-            playbtn.addEventListener("click", toggleRadio);
+  player.addEventListener("playing", () => {
+    playbtn.textContent = "⏸ Pausar";
+    led.classList.add("active");
+  });
+  player.addEventListener("pause", () => {
+    playbtn.textContent = "▶ Reproducir";
+    led.classList.remove("active");
+  });
+  player.addEventListener("error", () => {
+    playbtn.textContent = "▶ Reproducir";
+    led.classList.remove("active");
+    console.error("Error al cargar el stream");
+  });
+});
 
-            // Eventos para actualizar LED
-            player.addEventListener("playing", () => {
-                led.classList.remove("waiting");
-                led.classList.add("on");
-            });
-
-            player.addEventListener("pause", () => {
-                led.classList.remove("on", "waiting");
-            });
-
-            player.addEventListener("waiting", () => {
-                if (!player.paused) {
-                    led.classList.remove("on");
-                    led.classList.add("waiting");
-                }
-            });
-
-            player.addEventListener("stalled", () => {
-                if (!player.paused) {
-                    led.classList.remove("on");
-                    led.classList.add("waiting");
-                }
-            });
-
-            player.addEventListener("error", () => {
-                led.classList.remove("on", "waiting");
-            });
-        });
-    </script>
+function toggleRadio() {
+  const player = document.getElementById("radioplayer");
+  if (player.paused) {
+    player.play().catch(err => {
+      console.error("Error al intentar reproducir:", err);
+    });
+  } else {
+    player.pause();
+  }
+}
+</script>
 </body>
 </html>
+
