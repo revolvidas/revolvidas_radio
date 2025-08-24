@@ -17,60 +17,58 @@
 
     <!-- Botón Reproducción -->
     <div class="radio-container">
-      <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">▶ Reproducir</button>
+      <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">Reproducir</button>
       <audio id="radioplayer" preload="none">
-        <source src="https://radio-proxy-wib2.onrender.com/radio" type="audio/mpeg" />
+        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg" />
         Tu navegador no soporta audio HTML5.
       </audio>
-      <!-- LED Animado -->
-      <div id="led" class="led"></div>
     </div>
 
     <!-- Botones sociales -->
     <div class="socials">
       <a href="https://www.facebook.com/revolvidas" class="btn facebook-btn" target="_blank">Facebook</a>
-      <a href="https://www.youtube.com/@edalyadorado" class="btn youtube-btn" target="_blank">Youtube</a>
-      <a href="https://www.mixcloud.com/walter-dorado/" class="btn remixes-btn" target="_blank">Remixes</a>
+      <a href="https://www.youtube.com/@edalyadorado" class="btn youtube-btn" target="_blank">YouTube</a>
+      <a href="https://www.mixcloud.com/walter-dorado" class="btn remixes-btn" target="_blank">Mixcloud</a>
     </div>
   </div>
 
   <p class="footer">
-    ✨ Clásicos de los 80's y 90's en vivo 🎶🔥<br />
-    Escucha la mejor música retro 24/7 📻
+    🎶 Clásicos de los 80's y 90's en vivo 🎶<br />
+    Escucha la mejor música retro 24/7 🔥 📻
   </p>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const player = document.getElementById("radioplayer");
-  const playbtn = document.getElementById("playbtn");
-  const led = document.getElementById("led");
+  <script>
+    // Estados del botón según eventos del <audio>
+    document.addEventListener("DOMContentLoaded", () => {
+      const player = document.getElementById("radioplayer");
+      const playbtn = document.getElementById("playbtn");
 
-  player.addEventListener("playing", () => {
-    playbtn.textContent = "⏸ Pausar";
-    led.classList.add("active");
-  });
-  player.addEventListener("pause", () => {
-    playbtn.textContent = "▶ Reproducir";
-    led.classList.remove("active");
-  });
-  player.addEventListener("error", () => {
-    playbtn.textContent = "▶ Reproducir";
-    led.classList.remove("active");
-    console.error("Error al cargar el stream");
-  });
-});
-
-function toggleRadio() {
-  const player = document.getElementById("radioplayer");
-  if (player.paused) {
-    player.play().catch(err => {
-      console.error("Error al intentar reproducir:", err);
+      player.addEventListener("playing", () => { playbtn.textContent = "Pausar"; });
+      player.addEventListener("pause",   () => { playbtn.textContent = "Reproducir"; });
+      player.addEventListener("waiting", () => { if (!player.paused) playbtn.textContent = "Cargando..."; });
+      player.addEventListener("stalled", () => { if (!player.paused) playbtn.textContent = "Cargando..."; });
+      player.addEventListener("canplay", () => { if (!player.paused) playbtn.textContent = "Pausar"; });
+      player.addEventListener("error",   () => { playbtn.textContent = "Reproducir"; });
     });
-  } else {
-    player.pause();
-  }
-}
-</script>
-</body>
-</html>
 
+    function toggleRadio() {
+      const player  = document.getElementById("radioplayer");
+      const playbtn = document.getElementById("playbtn");
+
+      if (player.paused) {
+        // Mostrar "Cargando..." mientras inicia
+        playbtn.textContent = "Cargando...";
+        try { player.load(); } catch (e) {}
+
+        // Fallback si no logra iniciar
+        const timeout = setTimeout(() => {
+          if (player.paused) {
+            playbtn.textContent = "Reproducir";
+            console.error("Tiempo de carga agotado");
+          }
+        }, 12000);
+
+        const p = player.play();
+        if (p && typeof p.then === "function") {
+          p.then(() => clearTimeout(timeout))
+           .catch(err => { clearTimeout(timeout); playbtn.textContent = "Reproducir"; console.error(e
