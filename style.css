@@ -1,160 +1,69 @@
-/* Fondo con la imagen */
+/* Estilo general */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Press Start 2P', cursive; /* Fuente retro */
-  color: white;
-  text-align: center;
-  background: url('img/rm383-14.jpg') no-repeat center center fixed;
-  background-size: cover;
-
-  font-size: 12px; /* ✅ Tamaño más pequeño */
+    background: #111;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-
-/* Contenedor principal */
-.container {
-    background: rgba(10, 16, 30, 0.8); /* Transparencia */
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 380px;
-    margin: 40px auto;
-    box-shadow: 0 0 20px rgba(0,0,0,0.6);
-  background: rgba(10, 16, 30, 0.8); /* un poco de transparencia */
-  padding: 20px;
-  border-radius: 15px;
-  max-width: 500px;
-  margin: 40px auto;
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+.radio-container {
+    margin-top: 100px;
 }
 
-/* Logo */
-.logo {
-    width: 200px;
+.radio-title {
+    font-size: 20px; /* Más pequeño */
     margin-bottom: 20px;
-  width: 200px;
-  margin-bottom: 20px;
 }
 
-/* Títulos */
-h1 {
-    display: none;
-  display: none;
-  font-size: 42px;
-  font-weight: normal;
-  font-family: "Monoton", cursive; /* Fuente estilo retro */
-  color: #ea00ff; /* un morado neón */
-  text-shadow: 0 5px #a82f9f, 0 10px #ff00ff, 0 20px #ff00ff;
-  margin: 10px 0;
-}
-
-h2 {
-    font-size: 16px;
-    margin-bottom: 20px;
-    text-shadow: 0 0 5px #ff0099, 0 0 10px #ff66cc, 0 0 20px #ff0099;
-  font-size: 18px;
-  font-weight: normal;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 16px;
-  margin: 15px 0 20px;
-}
-
-/* Botones generales */
-.btn {
-    display: block;
-    width: 80%;
-    max-width: 300px;
-    margin: 15px auto;
-    padding: 15px;
+.play-button {
+    background-color: #ff5722;
     border: none;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
+    color: #fff;
+    padding: 12px 28px;
+    font-size: 14px; /* Más pequeño */
     cursor: pointer;
-    color: white;
-    transition: transform 0.2s, opacity 0.3s;
-    font-family: 'Press Start 2P', cursive; /* 👈 Fuente en botones */
-  display: block;
-  width: 80%;
-  max-width: 300px;
-  margin: 15px auto;
-  padding: 15px;
-  border: none;
-  border-radius: 50px;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.2s, opacity 0.3s;
+    border-radius: 6px;
+    transition: background 0.3s;
 }
 
-.btn:hover {
-    transform: scale(0.95);
-    opacity: 0.8;
-  transform: scale(0.95);
-  opacity: 0.9;
+.play-button:hover {
+    background-color: #e64a19;
 }
 
-/* Botón Radio (fucsia) */
-.radio-btn {
-    background: linear-gradient(to right, #8a00ff, #8a2be2);
-  background: linear-gradient(to right, #b600ff, #8202eb);
-}
-
-/* Facebook */
-.facebook-btn {
-    background: linear-gradient(to right, #3b5998, #1d42d5);
-  background: linear-gradient(to right, #3b5999, #1d42d6);
-}
-
-/* Youtube */
-/* YouTube */
-.youtube-btn {
-    background: linear-gradient(to right, #ff0000, #cc0000);
-  background: linear-gradient(to right, #ff0000, #cc0000);
-}
-
-/* Remixes */
-.remixes-btn {
-    background: linear-gradient(to right, #00c6ff, #0072ff);
-  background: linear-gradient(to right, #80ccff, #8027ff);
-}
-
-/* ===== LED de estado de audio ===== */
+/* LED de estado */
 .led {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin: 10px auto 0;
-  background: #555;              /* apagado */
-  box-shadow: 0 0 0 rgba(0,0,0,0);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin: 12px auto 0;
+    background: #444; /* apagado */
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
 /* Reproduciendo: pulso verde */
 .led.on {
-  background: #00ff5f;
-  box-shadow: 0 0 6px rgba(0,255,95,.9), 0 0 16px rgba(0,255,95,.6);
-  animation: ledPulse 1s infinite ease-in-out;
+    background: #00ff5f;
+    box-shadow: 0 0 6px rgba(0, 255, 95, 0.9), 0 0 16px rgba(0, 255, 95, 0.6);
+    animation: ledPulse 1s infinite ease-in-out;
 }
 
-/* Cargando/esperando: parpadeo ámbar */
+/* Cargando: parpadeo ámbar */
 .led.waiting {
-  background: #ffcc00;
-  box-shadow: 0 0 6px rgba(255,204,0,.9), 0 0 16px rgba(255,204,0,.6);
-  animation: ledBlink .7s infinite steps(1);
+    background: #ffcc00;
+    box-shadow: 0 0 6px rgba(255, 204, 0, 0.9), 0 0 16px rgba(255, 204, 0, 0.6);
+    animation: ledBlink 0.7s infinite steps(1);
 }
 
 @keyframes ledPulse {
-  0%, 100% { opacity: .6; transform: scale(1); }
-  50%      { opacity: 1;  transform: scale(1.2); }
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
 }
+
 @keyframes ledBlink {
-  0% { opacity: 1; }
-  50% { opacity: .2; }
-  100% { opacity: 1; }
+    0% { opacity: 1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 1; }
 }
+
