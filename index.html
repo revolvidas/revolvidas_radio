@@ -1,83 +1,37 @@
-@@ -19,7 +19,7 @@ <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
-    <div class="radio-container">
-      <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">Reproducir</button>
-      <audio id="radioplayer" preload="none">
-        <source src="https://radio-proxy-we02.onrender.com/radio" type="audio/mpeg" />
-        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg" />
-        Tu navegador no soporta audio HTML5.
-      </audio>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Revolvidas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Radio Revolvidas</h1>
+        <img src="img/logo.png" alt="Logo" class="logo">
+        <button id="playButton">Reproducir</button>
+        <p id="status"></p>
+        <audio id="audio" src="https://radio-proxy-iwb2.onrender.com/radio"></audio>
     </div>
-@@ -38,48 +38,52 @@ <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
-  </p>
 
-  <script>
-    // Sin cambiar estilos, solo lógica de estados del botón
-    document.addEventListener("DOMContentLoaded", () => {
-      const player = document.getElementById("radioplayer");
-      const playbtn = document.getElementById("playbtn");
+    <script>
+        const playButton = document.getElementById('playButton');
+        const audio = document.getElementById('audio');
+        const status = document.getElementById('status');
 
-      // Estados automáticos según eventos del <audio>
-      // Actualiza el texto del botón según los eventos del audio
-      player.addEventListener("playing", () => { playbtn.textContent = "Pausar"; });
-      player.addEventListener("pause", () => { playbtn.textContent = "Reproducir"; });
-      player.addEventListener("waiting", () => { if (!player.paused) playbtn.textContent = "Cargando..."; });
-      player.addEventListener("stalled", () => { if (!player.paused) playbtn.textContent = "Cargando..."; });
-      player.addEventListener("canplay", () => { if (!player.paused) playbtn.textContent = "Pausar"; });
-      player.addEventListener("error", () => { playbtn.textContent = "Reproducir"; });
-      player.addEventListener("error", () => {
-        console.error("Error al cargar el stream");
-        playbtn.textContent = "Reproducir";
-      });
-    });
-
-    function startPlayback(player, playbtn) {
-      // Forzamos carga por compatibilidad con móviles/iOS
-      try { player.load(); } catch (e) {}
-      playbtn.textContent = "Cargando...";
-
-      const attemptPlay = player.play();
-      if (attemptPlay && typeof attemptPlay.then === "function") {
-        attemptPlay.then(() => {
-          // 'playing' actualizará el texto a "Pausar"
-        }).catch((err) => {
-          console.error("Error play():", err);
-          playbtn.textContent = "Reproducir";
+        playButton.addEventListener('click', () => {
+            status.textContent = 'Cargando...';
+            audio.load();
+            audio.play().then(() => {
+                status.textContent = '';
+                playButton.textContent = 'Reproduciendo';
+            }).catch(error => {
+                status.textContent = 'Error al reproducir el audio.';
+                console.error(error);
+            });
         });
-      }
-    }
-
-    function toggleRadio() {
-      const player = document.getElementById("radioplayer");
-      const playbtn = document.getElementById("playbtn");
-
-      if (player.paused) {
-        startPlayback(player, playbtn);
-        playbtn.textContent = "Cargando...";
-        player.load(); // Reinicia la carga del stream
-
-        const timeout = setTimeout(() => {
-          if (player.paused) {
-            playbtn.textContent = "Reproducir";
-            console.error("Tiempo de carga agotado");
-          }
-        }, 10000); // 10 segundos
-
-        const playPromise = player.play();
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            clearTimeout(timeout);
-            // "playing" cambiará el texto a "Pausar"
-          }).catch((error) => {
-            clearTimeout(timeout);
-            console.error("Error al intentar reproducir:", error);
-            playbtn.textContent = "Reproducir";
-          });
-        }
-      } else {
-        player.pause();
-        // 'pause' pondrá "Reproducir"
-      }
-    }
-  </script>
+    </script>
 </body>
 </html>
+
