@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Revolvid@s Radio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revolvidas Radio</title>
+  <link rel="stylesheet" href="style.css?v=5">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <!-- Logo -->
-    <img src="img/logo.png" alt="Revolvid@s Radio Logo" class="logo" />
+    <img src="logo.png" alt="Revolvidas Radio" class="logo">
+    <h1 class="title">REVOLVIDAS RADIO</h1>
 
-    <!-- Slogan -->
-    <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
+    <!-- Botón Play -->
+    <button id="playButton" class="btn">▶ Reproducir</button>
 
-    <!-- Botón / Player -->
-    <div class="radio-container">
-      <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">▶ Reproducir</button>
-      <audio id="radioplayer" preload="none">
-        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg" />
-        Tu navegador no soporta audio HTML5.
-      </audio>
-    </div>
+    <!-- Loader retro girando -->
+    <div id="loader" class="loader" style="display:none;"></div>
 
-    <!-- Botones sociales -->
+    <!-- Reproductor -->
+    <audio id="audio" src="https://stream.zeno.fm/mc9qcnmdd48uv" preload="none"></audio>
+
+    <!-- Botones de redes -->
     <div class="socials">
-      <a href="https://www.facebook.com/revolvidas" class="btn facebook-btn" target="_blank">Facebook</a>
-      <a href="https://www.youtube.com/@djwalydorado" class="btn youtube-btn" target="_blank">YouTube</a>
-      <a href="https://www.mixcloud.com/walter-dorado/" class="btn remixes-btn" target="_blank">Mixcloud</a>
+      <a href="https://www.facebook.com/revolvidas" target="_blank" class="btn">Facebook</a>
+      <a href="https://www.youtube.com/@djwalydorado" target="_blank" class="btn">YouTube</a>
+      <a href="https://www.mixcloud.com/walter-dorado/" target="_blank" class="btn">Mixcloud</a>
     </div>
+
+    <p class="slogan">Clásicos de los 80’s y 90’s en vivo 🎶<br>Escucha la mejor música retro 24/7.</p>
   </div>
 
-  <p class="footer">🎶 Clásicos de los 80’s y 90’s en vivo 🎶<br>
-    Escucha la mejor música retro 24/7 💿</p>
-
   <script>
-    function toggleRadio() {
-      const player = document.getElementById("radioplayer");
-      const btn = document.getElementById("playbtn");
-      if (player.paused) {
-        player.play().then(() => {
-          btn.textContent = "⏸ Pausar";
-        }).catch(() => {
-          btn.textContent = "▶ Reproducir";
-        });
-      } else {
-        player.pause();
-        btn.textContent = "▶ Reproducir";
-      }
-    }
+    const audio = document.getElementById("audio");
+    const playButton = document.getElementById("playButton");
+    const loader = document.getElementById("loader");
+
+    playButton.addEventListener("click", () => {
+      loader.style.display = "block"; // muestra cargando
+      audio.play().then(() => {
+        loader.style.display = "none"; // oculta al empezar
+      }).catch(err => {
+        loader.style.display = "none";
+        console.log(err);
+      });
+    });
   </script>
 </body>
 </html>
