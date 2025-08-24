@@ -19,6 +19,7 @@
     <div class="radio-container">
       <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">Reproducir</button>
       <audio id="radioplayer" preload="none">
+        <!-- Usa exactamente la URL de tu stream -->
         <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg" />
         Tu navegador no soporta audio HTML5.
       </audio>
@@ -38,17 +39,18 @@
   </p>
 
   <script>
-    // Estados del botón según eventos del <audio>
+    // --- Solo lógica JS: no modifica estilos ni estructura ---
     document.addEventListener("DOMContentLoaded", () => {
       const player = document.getElementById("radioplayer");
       const playbtn = document.getElementById("playbtn");
 
+      // Actualiza el texto según eventos del audio
       player.addEventListener("playing", () => { playbtn.textContent = "Pausar"; });
       player.addEventListener("pause",   () => { playbtn.textContent = "Reproducir"; });
       player.addEventListener("waiting", () => { if (!player.paused) playbtn.textContent = "Cargando..."; });
       player.addEventListener("stalled", () => { if (!player.paused) playbtn.textContent = "Cargando..."; });
       player.addEventListener("canplay", () => { if (!player.paused) playbtn.textContent = "Pausar"; });
-      player.addEventListener("error",   () => { playbtn.textContent = "Reproducir"; });
+      player.addEventListener("error",   () => { playbtn.textContent = "Reproducir"; console.error("Audio error"); });
     });
 
     function toggleRadio() {
@@ -56,19 +58,30 @@
       const playbtn = document.getElementById("playbtn");
 
       if (player.paused) {
-        // Mostrar "Cargando..." mientras inicia
+        // mostrar cargando y forzar recarga del stream
         playbtn.textContent = "Cargando...";
         try { player.load(); } catch (e) {}
 
-        // Fallback si no logra iniciar
+        // timeout por si no arranca
         const timeout = setTimeout(() => {
           if (player.paused) {
             playbtn.textContent = "Reproducir";
             console.error("Tiempo de carga agotado");
           }
-        }, 12000);
+        }, 12000); // 12s
 
+        // intentar play() (promise en navegadores modernos)
         const p = player.play();
         if (p && typeof p.then === "function") {
           p.then(() => clearTimeout(timeout))
-           .catch(err => { clearTimeout(timeout); playbtn.textContent = "Reproducir"; console.error(e
+           .catch(err => { clearTimeout(timeout); playbtn.textContent = "Reproducir"; console.error("Play error:", err); });
+        }
+      } else {
+        player.pause();
+        // 'pause' evento restablecerá texto a "Reproducir"
+      }
+    }
+  </script>
+</body>
+</html>
+
