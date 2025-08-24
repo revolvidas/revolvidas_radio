@@ -3,47 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revolvidas Radio</title>
-  <link rel="stylesheet" href="style.css?v=5">
+  <title>RevolvidAS Radio</title>
+  <link rel="stylesheet" href="style.css?v=3">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <img src="logo.png" alt="Revolvidas Radio" class="logo">
-    <h1 class="title">REVOLVIDAS RADIO</h1>
+    <img src="logo.png" alt="RevolvidAS Radio" class="logo">
 
-    <!-- Botón Play -->
-    <button id="playButton" class="btn">▶ Reproducir</button>
-
-    <!-- Loader retro girando -->
-    <div id="loader" class="loader" style="display:none;"></div>
+    <h1 class="titulo">REVOLVIDAS RADIO</h1>
 
     <!-- Reproductor -->
-    <audio id="audio" src="https://stream.zeno.fm/mc9qcnmdd48uv" preload="none"></audio>
-
-    <!-- Botones de redes -->
-    <div class="socials">
-      <a href="https://www.facebook.com/revolvidas" target="_blank" class="btn">Facebook</a>
-      <a href="https://www.youtube.com/@djwalydorado" target="_blank" class="btn">YouTube</a>
-      <a href="https://www.mixcloud.com/walter-dorado/" target="_blank" class="btn">Mixcloud</a>
+    <div class="player">
+      <button id="playButton">▶ Reproducir</button>
+      <div id="loader" class="loader"></div>
+      <audio id="audio" preload="none">
+        <source src="https://stream.zeno.fm/eh9gv1df5s8uv" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+      </audio>
     </div>
 
-    <p class="slogan">Clásicos de los 80’s y 90’s en vivo 🎶<br>Escucha la mejor música retro 24/7.</p>
+    <!-- Redes -->
+    <div class="redes">
+      <a href="https://www.facebook.com/revolvidas" target="_blank">Facebook</a>
+      <a href="https://www.youtube.com/@djwalydorado" target="_blank">YouTube</a>
+      <a href="https://www.mixcloud.com/walter-dorado/" target="_blank">Mixcloud</a>
+    </div>
+
+    <p class="eslogan">Clásicos de los 80’s y 90’s en vivo 🎶<br>Escucha la mejor música retro 24/7.</p>
   </div>
 
   <script>
-    const audio = document.getElementById("audio");
     const playButton = document.getElementById("playButton");
+    const audio = document.getElementById("audio");
     const loader = document.getElementById("loader");
 
     playButton.addEventListener("click", () => {
-      loader.style.display = "block"; // muestra cargando
-      audio.play().then(() => {
-        loader.style.display = "none"; // oculta al empezar
-      }).catch(err => {
-        loader.style.display = "none";
-        console.log(err);
-      });
+      if (audio.paused) {
+        loader.style.display = "block"; // Mostrar loader
+        audio.play().then(() => {
+          loader.style.display = "none"; // Ocultar cuando comience
+          playButton.textContent = "⏸ Pausar";
+        }).catch(err => {
+          loader.style.display = "none"; // Ocultar si falla
+          console.log("Error al reproducir:", err);
+        });
+      } else {
+        audio.pause();
+        playButton.textContent = "▶ Reproducir";
+      }
     });
   </script>
 </body>
