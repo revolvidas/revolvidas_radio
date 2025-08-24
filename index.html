@@ -1,34 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Revolvidas Radio</title>
-
-  <!-- Fuente 8-bit -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-
-  <!-- CSS (cache-busting) -->
-  <link rel="stylesheet" href="style.css?v=9" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revolvid@s Radio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <!-- Logo -->
-    <img src="img/logo.png" alt="Revolvidas Radio Logo" class="logo" />
+    <img src="img/logo.png" alt="Revolvid@s Radio Logo" class="logo">
 
-    <!-- Eslogan (como el original) -->
+    <!-- Slogan -->
     <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
 
-    <!-- Reproductor -->
+    <!-- Botón Reproducir -->
     <div class="radio-container">
-      <!-- Loader retro, pequeño y ENCIMA del botón -->
-      <div id="loader" class="loader-vinyl" aria-hidden="true"></div>
-
-      <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
-
-      <audio id="radioPlayer" preload="none">
-        <!-- Usa tu stream que ya te funcionaba -->
-        <source src="https://radio-proxy-iweb2.onrender.com/radio" type="audio/mpeg" />
+      <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">▶ Reproducir</button>
+      <audio id="radioplayer" preload="none">
+        <source src="https://radio-proxy-iw82.onrender.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
     </div>
@@ -36,47 +27,25 @@
     <!-- Botones sociales -->
     <div class="socials">
       <a href="https://www.facebook.com/revolvidas" class="btn facebook-btn" target="_blank">Facebook</a>
-      <a href="https://www.youtube.com/@djvalyodardo" class="btn youtube-btn" target="_blank">Youtube</a>
-      <a href="https://www.mixcloud.com/walter-donardo/" class="btn remixes-btn" target="_blank">Mixcloud</a>
+      <a href="https://www.youtube.com/@djwalydorado" class="btn youtube-btn" target="_blank">YouTube</a>
+      <a href="https://www.mixcloud.com/walter-dorado/" class="btn remixes-btn" target="_blank">Mixcloud</a>
     </div>
-
-    <!-- Footer -->
-    <p class="footer">
-      Clásicos de los 80’s y 90’s en vivo 🎶 <br />
-      Escucha la mejor música retro 24/7.
-    </p>
   </div>
 
+  <p class="footer">🎶 Clásicos de los 80’s y 90’s en vivo 🎶<br>
+    Escucha la mejor música retro 24/7 💿</p>
+
   <script>
-    // Referencias
-    const player  = document.getElementById('radioPlayer');
-    const playBtn = document.getElementById('playBtn');
-    const loader  = document.getElementById('loader');
-
-    // Oculta loader cuando realmente empieza / deja de sonar
-    player.addEventListener('playing', () => { loader.style.display = 'none'; });
-    player.addEventListener('pause',   () => { loader.style.display = 'none'; });
-    player.addEventListener('error',   () => { loader.style.display = 'none'; });
-
     function toggleRadio() {
+      const player = document.getElementById("radioplayer");
+      const playbtn = document.getElementById("playbtn");
+
       if (player.paused) {
-        // Mostrar loader pequeño mientras intenta conectar
-        loader.style.display = 'block';
-
-        // Mantengo tu lógica original
-        player.play().catch(() => {
-          // si falla, esconder loader y volver al texto original
-          loader.style.display = 'none';
-          playBtn.textContent = "▶ Reproducir";
-        });
-        playBtn.textContent = "Ⅱ Pausar";
-
-        // Fallback: ocultar loader si algo tarda demasiado
-        setTimeout(() => { loader.style.display = 'none'; }, 7000);
+        player.play();
+        playbtn.textContent = "⏸ Pausar";
       } else {
         player.pause();
-        playBtn.textContent = "▶ Reproducir";
-        loader.style.display = 'none';
+        playbtn.textContent = "▶ Reproducir";
       }
     }
   </script>
