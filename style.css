@@ -5,7 +5,7 @@ body {
     font-family: 'Press Start 2P', cursive; /* 👈 Fuente retro en todo */
     color: white;
     text-align: center;
-    background: url("img/rm383-14.jpg") no-repeat center center fixed; /* 👈 Fondo */
+    background: url('img/rm383-14.jpg') no-repeat center center fixed; /* 👈 Fondo */
     background-size: cover;
   margin: 0;
   padding: 0;
