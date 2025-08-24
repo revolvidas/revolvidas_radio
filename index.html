@@ -10,12 +10,6 @@
     <div class="container">
         <img src="img/logo.png" alt="Logo" class="logo">
         <h1>Radio Online</h1>
-        
-        <!-- LED Equalizer -->
-        <div class="equalizer" id="equalizer">
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-
         <button id="playButton">▶ Reproducir</button>
         <p id="status">Esperando reproducción...</p>
         <audio id="audio" preload="none">
@@ -27,7 +21,6 @@
         const playButton = document.getElementById('playButton');
         const audio = document.getElementById('audio');
         const status = document.getElementById('status');
-        const equalizer = document.getElementById('equalizer');
 
         playButton.addEventListener('click', () => {
             status.textContent = "Cargando...";
@@ -37,7 +30,6 @@
                 status.textContent = "Reproduciendo...";
                 playButton.textContent = "⏸ Pausar";
                 playButton.disabled = false;
-                equalizer.classList.add('active');
             }).catch(error => {
                 status.textContent = "Error al reproducir";
                 playButton.disabled = false;
@@ -48,16 +40,13 @@
             if (!audio.paused) {
                 audio.pause();
                 playButton.textContent = "▶ Reproducir";
-                equalizer.classList.remove('active');
                 status.textContent = "Pausado";
             } else {
                 audio.play();
                 playButton.textContent = "⏸ Pausar";
-                equalizer.classList.add('active');
                 status.textContent = "Reproduciendo...";
             }
         });
     </script>
 </body>
 </html>
-
