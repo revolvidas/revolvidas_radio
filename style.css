@@ -1,80 +1,117 @@
 /* Fondo general */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Press Start 2P', cursive;
-    background: url('img/mb33-14.4.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  background: url('img/rm383-14.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
 }
 
-/* Contenedor principal */
+/* Contenedor principal (igual look) */
 .container {
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-    padding: 20px;
-    max-width: 480px;
-    margin: 50px auto;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 480px;
+  margin: 50px auto;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
 }
 
 /* Logo */
 .logo {
-    width: 280px;
-    margin-bottom: 15px;
+  width: 200px;
+  margin-bottom: 15px;
 }
 
-/* Botón principal de radio */
-.radio-btn {
-    font-family: 'Press Start 2P', cursive; /* ^_^ fuerza tipografía retro */
-    background: linear-gradient(#0deg, #a50eff, #ff0ec3);
-    border: none;
-    padding: 10px;
-    color: white;
-    border-radius: 3px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 14px;
-}
-
-/* Otros botones */
-.btn {
-    font-family: 'Press Start 2P', cursive; /* ^_^ también retro */
-    display: block;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 3px;
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-}
-
-/* facebook-btn */
-.facebook-btn {
-    background: linear-gradient(#0deg, #3b5998, #1e2c72);
-}
-
-/* youtube-btn */
-.youtube-btn {
-    background: red;
-}
-
-/* mixcloud-btn */
-.mixcloud-btn {
-    background: linear-gradient(#0deg, #4facfe, #00f0ff);
-}
-
-/* footer */
-.footer {
-    margin-top: 20px;
-    font-size: 12px;
-    text-shadow: 1px 1px 3px black;
-}
-
-/* título */
+/* Título / eslogan (como el original) */
 .titulo {
-    font-size: 16px; /* ^_^ aquí ajustamos */
-    font-family: 'Press Start 2P', cursive; /* mantiene la tipografía retro */
-    margin: 15px 0;
+  font-size: 14px;
+  text-shadow: 1px 1px 3px #000;
+  margin: 15px 0 25px 0;
+}
+
+/* Contenedor del reproductor para posicionar el loader encima */
+.radio-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Loader retro: “vinilo” pequeño girando, ENCIMA del botón */
+.loader-vinyl {
+  display: none;                /* oculto por defecto */
+  position: absolute;
+  top: -26px;                   /* encima del botón */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  /* anillos tipo vinilo */
+  background:
+    radial-gradient(circle at center, #ff2bd9 0 3px, transparent 3px),
+    radial-gradient(circle, #111 35%, #222 36% 50%, #111 51% 65%, #222 66% 80%, #111 81% 100%);
+  box-shadow: 0 0 6px rgba(255, 0, 255, 0.5);
+  animation: spin 0.9s linear infinite;
+  image-rendering: pixelated;   /* toque retro */
+}
+
+@keyframes spin {
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* Botón principal (radio) — igual estilo morado/fucsia */
+.radio-btn {
+  background: linear-gradient(90deg, #8a00ff, #ff00c8);
+  border: none;
+  padding: 15px;
+  margin: 10px 0;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Botones generales */
+.btn {
+  display: block;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: transform .2s, opacity .3s;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* Facebook */
+.facebook-btn {
+  background: linear-gradient(90deg, #3b5998, #1e3c72);
+}
+
+/* Youtube */
+.youtube-btn {
+  background: #e60000;
+}
+
+/* Mixcloud/Remixes */
+.remixes-btn {
+  background: linear-gradient(90deg, #00a6ff, #8027ff);
+}
+
+/* Footer */
+.footer {
+  margin-top: 20px;
+  font-size: 12px;
+  text-shadow: 1px 1px 3px #000;
 }
