@@ -1,66 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revolvid@s Radio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revolvid@s Radio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
-        <!-- Logo -->
-        <img src="img/logo.png" alt="Revolvid@s Radio Logo" class="logo">
+  <div class="container">
+    <!-- Logo -->
+    <img src="img/logo.png" alt="Revolvid@s Radio Logo" class="logo" />
 
-        <!-- Slogan -->
-        <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
+    <!-- Slogan -->
+    <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
 
-        <!-- Botón Reproducción -->
-        <div class="radio-container">
-            <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">Reproducir</button>
-            <audio id="radioplayer" preload="none">
-                <source src="https://radio-proxy-1.web2.onrender.com/radio" type="audio/mpeg">
-                Tu navegador no soporta audio HTML5.
-            </audio>
-        </div>
-
-        <!-- Botones sociales -->
-        <div class="socials">
-            <a href="https://www.facebook.com/revolvidas" class="btn facebook-btn" target="_blank">Facebook</a>
-            <a href="https://www.youtube.com/@edalyadorado" class="btn youtube-btn" target="_blank">YouTube</a>
-            <a href="https://www.mixcloud.com/walter-dorado" class="btn remixes-btn" target="_blank">Mixcloud</a>
-        </div>
+    <!-- Botón Reproducción -->
+    <div class="radio-container">
+      <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">Reproducir</button>
+      <audio id="radioplayer" preload="none">
+        <source src="https://radio-proxy-we02.onrender.com/radio" type="audio/mpeg" />
+        Tu navegador no soporta audio HTML5.
+      </audio>
     </div>
 
-    <p class="footer">🎶 Clásicos de los 80's y 90's en vivo 🎶<br>
-    Escucha la mejor música retro 24/7 🔥 📻</p>
+    <!-- Botones sociales -->
+    <div class="socials">
+      <a href="https://www.facebook.com/revolvidas" class="btn facebook-btn" target="_blank">Facebook</a>
+      <a href="https://www.youtube.com/@edalyadorado" class="btn youtube-btn" target="_blank">YouTube</a>
+      <a href="https://www.mixcloud.com/walter-dorado" class="btn remixes-btn" target="_blank">Mixcloud</a>
+    </div>
+  </div>
 
-    <script>
-    function toggleRadio() {
-        const player = document.getElementById("radioplayer");
-        const playbtn = document.getElementById("playbtn");
+  <p class="footer">
+    🎶 Clásicos de los 80's y 90's en vivo 🎶<br />
+    Escucha la mejor música retro 24/7 🔥 📻
+  </p>
 
-        if (player.paused) {
-            playbtn.textContent = "Cargando...";
+  <script>
+    // Sin cambiar estilos, solo lógica de estados del botón
+    document.addEventListener("DOMContentLoaded", () => {
+      const player = document.getElementById("radioplayer");
+      const playbtn = document.getElementById("playbtn");
 
-            player.play().then(() => {
-                // Cuando se pueda reproducir, cambiamos a "Pausar"
-                playbtn.textContent = "Pausar";
-            }).catch(err => {
-                playbtn.textContent = "Error al reproducir";
-                console.error("Error:", err);
-            });
+      // Estados automáticos según eventos del <audio>
+      player.addEventListener("playing", () => { playbtn.textContent = "Pausar"; });
+      player.addEventListener("pause", () => { playbtn.textContent = "Reproducir"; });
+      player.addEventListener("waiting", () => { if (!player.paused) playbtn.textContent = "Cargando..."; });
+      player.addEventListener("stalled", () => { if (!player.paused) playbtn.textContent = "Cargando..."; });
+      player.addEventListener("canplay", () => { if (!player.paused) playbtn.textContent = "Pausar"; });
+      player.addEventListener("error", () => { playbtn.textContent = "Reproducir"; });
+    });
 
-            // Aseguramos cambio cuando el audio está listo
-            player.addEventListener('canplay', () => {
-                playbtn.textContent = "Pausar";
-            }, { once: true });
+    function startPlayback(player, playbtn) {
+      // Forzamos carga por compatibilidad con móviles/iOS
+      try { player.load(); } catch (e) {}
+      playbtn.textContent = "Cargando...";
 
-        } else {
-            player.pause();
-            playbtn.textContent = "Reproducir";
-        }
+      const attemptPlay = player.play();
+      if (attemptPlay && typeof attemptPlay.then === "function") {
+        attemptPlay.then(() => {
+          // 'playing' actualizará el texto a "Pausar"
+        }).catch((err) => {
+          console.error("Error play():", err);
+          playbtn.textContent = "Reproducir";
+        });
+      }
     }
-    </script>
+
+    function toggleRadio() {
+      const player = document.getElementById("radioplayer");
+      const playbtn = document.getElementById("playbtn");
+
+      if (player.paused) {
+        startPlayback(player, playbtn);
+      } else {
+        player.pause();
+        // 'pause' pondrá "Reproducir"
+      }
+    }
+  </script>
 </body>
 </html>
+
