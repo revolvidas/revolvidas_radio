@@ -3,20 +3,20 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Press Start 2P', cursive;
-  background: url('img/rm383-14.jpg') no-repeat center center fixed;
+  background: url("img/rm383-14.jpg") no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
+  color: white;
   text-align: center;
 }
 
-/* Contenedor principal (igual look) */
+/* Contenedor principal */
 .container {
   background: rgba(0, 0, 0, 0.7);
   border-radius: 20px;
   padding: 20px;
-  max-width: 480px;
+  max-width: 400px;
   margin: 50px auto;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  box-shadow: 0px 8px 25px rgba(0,0,0,0.6);
 }
 
 /* Logo */
@@ -25,46 +25,10 @@ body {
   margin-bottom: 15px;
 }
 
-/* Título / eslogan (como el original) */
-.titulo {
-  font-size: 14px;
-  text-shadow: 1px 1px 3px #000;
-  margin: 15px 0 25px 0;
-}
-
-/* Contenedor del reproductor para posicionar el loader encima */
-.radio-container {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-
-/* Loader retro: “vinilo” pequeño girando, ENCIMA del botón */
-.loader-vinyl {
-  display: none;                /* oculto por defecto */
-  position: absolute;
-  top: -26px;                   /* encima del botón */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  /* anillos tipo vinilo */
-  background:
-    radial-gradient(circle at center, #ff2bd9 0 3px, transparent 3px),
-    radial-gradient(circle, #111 35%, #222 36% 50%, #111 51% 65%, #222 66% 80%, #111 81% 100%);
-  box-shadow: 0 0 6px rgba(255, 0, 255, 0.5);
-  animation: spin 0.9s linear infinite;
-  image-rendering: pixelated;   /* toque retro */
-}
-
-@keyframes spin {
-  to { transform: translateX(-50%) rotate(360deg); }
-}
-
-/* Botón principal (radio) — igual estilo morado/fucsia */
+/* Botón principal de radio */
 .radio-btn {
-  background: linear-gradient(90deg, #8a00ff, #ff00c8);
+  font-family: 'Press Start 2P', cursive;  /* 👈 fuerza tipografía retro */
+  background: linear-gradient(90deg, #a500ff, #ff00c8);
   border: none;
   padding: 15px;
   margin: 10px 0;
@@ -75,8 +39,9 @@ body {
   width: 100%;
 }
 
-/* Botones generales */
+/* Otros botones */
 .btn {
+  font-family: 'Press Start 2P', cursive;  /* 👈 también retro */
   display: block;
   padding: 15px;
   margin: 10px 0;
@@ -84,34 +49,30 @@ body {
   text-decoration: none;
   color: white;
   font-size: 14px;
-  border: none;
-  cursor: pointer;
-  transition: transform .2s, opacity .3s;
 }
 
-.btn:hover {
-  transform: scale(0.98);
-  opacity: 0.9;
-}
-
-/* Facebook */
 .facebook-btn {
   background: linear-gradient(90deg, #3b5998, #1e3c72);
 }
 
-/* Youtube */
 .youtube-btn {
-  background: #e60000;
+  background: red;
 }
 
-/* Mixcloud/Remixes */
 .remixes-btn {
-  background: linear-gradient(90deg, #00a6ff, #8027ff);
+  background: linear-gradient(90deg, #4facfe, #a500ff);
 }
 
 /* Footer */
 .footer {
   margin-top: 20px;
   font-size: 12px;
-  text-shadow: 1px 1px 3px #000;
+  text-shadow: 1px 1px 3px black;
+}
+
+.titulo {
+  font-size: 12px;   /* aquí ajustas el tamaño */
+  font-size: 8px;   /* aquí ajustas el tamaño */
+  font-family: 'Press Start 2P', cursive; /* mantiene la tipografía retro */
+  margin: 15px 0;
 }
