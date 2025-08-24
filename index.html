@@ -1,59 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>revolidas_radio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revolvidas Radio</title>
+
+  <!-- Fuente 8-bit -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="style.css?v=9" />
 </head>
 <body>
-    <div class="container">
-        <div>
-            <!-- Logo -->
-            <img src="img/logo.png" alt="revolidas Radio" class="logo">
-            <!-- Título -->
-            <h2 class="titulo">¡HITS QUE NUNCA MUEREN! ^_^</h2>
-            <div class="boton_reproducir">
-                <button class="radio-btn" onclick="toggleRadio()" id="playbtn">▶ Reproducir</button>
-                <audio id="radio" src="https://stream-141.zeno.fm/2nordender.com/radio" type="audio/mpeg">
-                    Tu navegador no soporta audio HTML5.
-                </audio>
-                <!-- Loading GIF -->
-                <img src="img/loading.gif" alt="Cargando" id="loadingGif" style="display: none; width: 50px;">
-            </div>
-        </div>
-        <div class="botones_sociales">
-            <a href="https://www.facebook.com/revolidas" class="btn facebook-btn" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.youtube.com/@walter-dorado" class="btn youtube-btn" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.mixcloud.com/walter-dorado/" class="btn mixcloud-btn" target="_blank"><i class="fab fa-mixcloud"></i></a>
-        </div>
+  <div class="container">
+    <!-- Logo -->
+    <img src="img/logo.png" alt="Revolvidas Radio Logo" class="logo" />
+
+    <!-- Eslogan (como el original) -->
+    <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
+
+    <!-- Reproductor -->
+    <div class="radio-container">
+      <!-- Loader retro, pequeño y ENCIMA del botón -->
+      <div id="loader" class="loader-vinyl" aria-hidden="true"></div>
+
+      <button class="btn radio-btn" onclick="toggleRadio()" id="playBtn">▶ Reproducir</button>
+
+      <audio id="radioPlayer" preload="none">
+        <!-- Usa tu stream que ya te funcionaba -->
+        <source src="https://radio-proxy-iweb2.onrender.com/radio" type="audio/mpeg" />
+        Tu navegador no soporta audio HTML5.
+      </audio>
     </div>
-    <p class="footer">¡Clásicos de los 80's y 90's en vivo! ^_^<br>
-    Escucha la mejor música de ayer! ^_^</p>
-    <script>
-        function toggleRadio() {
-            const player = document.getElementById("radio");
-            const playbtn = document.getElementById("playbtn");
-            const loadingGif = document.getElementById("loadingGif");
 
-            loadingGif.style.display = 'block'; // Show loading GIF
-            playbtn.style.display = 'none'; // Hide play button
+    <!-- Botones sociales -->
+    <div class="socials">
+      <a href="https://www.facebook.com/revolvidas" class="btn facebook-btn" target="_blank">Facebook</a>
+      <a href="https://www.youtube.com/@djvalyodardo" class="btn youtube-btn" target="_blank">Youtube</a>
+      <a href="https://www.mixcloud.com/walter-donardo/" class="btn remixes-btn" target="_blank">Mixcloud</a>
+    </div>
 
-            if (player.paused) {
-                player.play();
-                playbtn.textContent = "⏸ Pausar";
-            } else {
-                player.pause();
-                playbtn.textContent = "▶ Reproducir";
-            }
+    <!-- Footer -->
+    <p class="footer">
+      Clásicos de los 80’s y 90’s en vivo 🎶 <br />
+      Escucha la mejor música retro 24/7.
+    </p>
+  </div>
 
-            // Hide loading GIF and show button after a short delay (simulating load time)
-            setTimeout(() => {
-                loadingGif.style.display = 'none';
-                playbtn.style.display = 'block';
-            }, 2000); // Adjust delay as needed
-        }
-    </script>
+  <script>
+    // Referencias
+    const player  = document.getElementById('radioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const loader  = document.getElementById('loader');
+
+    // Oculta loader cuando realmente empieza / deja de sonar
+    player.addEventListener('playing', () => { loader.style.display = 'none'; });
+    player.addEventListener('pause',   () => { loader.style.display = 'none'; });
+    player.addEventListener('error',   () => { loader.style.display = 'none'; });
+
+    function toggleRadio() {
+      if (player.paused) {
+        // Mostrar loader pequeño mientras intenta conectar
+        loader.style.display = 'block';
+
+        // Mantengo tu lógica original
+        player.play().catch(() => {
+          // si falla, esconder loader y volver al texto original
+          loader.style.display = 'none';
+          playBtn.textContent = "▶ Reproducir";
+        });
+        playBtn.textContent = "Ⅱ Pausar";
+
+        // Fallback: ocultar loader si algo tarda demasiado
+        setTimeout(() => { loader.style.display = 'none'; }, 7000);
+      } else {
+        player.pause();
+        playBtn.textContent = "▶ Reproducir";
+        loader.style.display = 'none';
+      }
+    }
+  </script>
 </body>
 </html>
