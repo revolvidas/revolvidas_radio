@@ -1,20 +1,16 @@
 /* Fondo con la imagen */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Press Start 2P', cursive; /* 👈 Fuente retro en todo */
-    color: white;
-    text-align: center;
-    background: url('img/rm383-14.jpg') no-repeat center center fixed; /* 👈 Fondo */
-    background-size: cover;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Press Start 2P', cursive; /* Fuente retro en todo */
   color: white;
   text-align: center;
-  background: url("img/wall.jpg") no-repeat center center fixed;
+
+  /* ✅ Fondo con fallback */
+  background: url('img/rm383-14.jpg') no-repeat center center fixed;
   background-size: cover;
 }
+
 
 /* Contenedor principal */
 .container {
