@@ -1,74 +1,86 @@
 body {
-  margin: 0;
   font-family: 'Press Start 2P', cursive;
-  text-align: center;
-  background: url("rm383.jpg") no-repeat center center fixed;
+  margin: 0;
+  padding: 0;
+  background: url("rm383-14.jpg") no-repeat center center fixed;
   background-size: cover;
   color: white;
+  text-align: center;
 }
 
 .container {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   padding: 20px;
-  margin: 0 auto;
-  max-width: 500px;
-  border-radius: 12px;
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 600px;
 }
 
 .logo {
-  max-width: 200px;
-  margin: 20px auto;
+  max-width: 180px;
+  margin-bottom: 15px;
 }
 
-.title {
-  color: #ff00ff;
-  font-size: 18px;
+.titulo {
+  color: #a020f0; /* morado */
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
-.btn {
-  display: inline-block;
-  background: #ff00ff;
+.player {
+  position: relative;
+  margin: 20px 0;
+}
+
+#playButton {
+  background: #a020f0;
   color: white;
-  padding: 12px 20px;
-  margin: 10px;
-  text-decoration: none;
-  border-radius: 8px;
   border: none;
-  font-family: 'Press Start 2P', cursive;
+  padding: 12px 24px;
+  font-size: 14px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  border-radius: 10px;
+  font-family: 'Press Start 2P', cursive;
 }
 
-.btn:hover {
-  background: #ff33ff;
-  transform: scale(1.1);
+#playButton:hover {
+  background: #ff00ff;
 }
 
-.socials {
-  margin-top: 20px;
-}
-
-.slogan {
-  margin-top: 30px;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-/* Loader retro girando */
+/* Loader encima del botón */
 .loader {
-  width: 60px;
-  height: 60px;
-  border: 8px solid #ff00ff;
-  border-top: 8px solid #00ffff;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  border: 3px solid #fff;
+  border-top: 3px solid #a020f0;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 20px auto;
-  image-rendering: pixelated;
+  z-index: 2;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.redes a {
+  color: #ff00ff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.redes a:hover {
+  color: #ffffff;
+}
+
+.eslogan {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #ddd;
 }
 
