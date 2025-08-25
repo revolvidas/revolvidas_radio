@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="player-container">
+        <img src="img/logo.png" alt="Logo Radio Revolvidas" class="logo">
         <h1>Radio Revolvidas</h1>
-        <img src="img/logo.png" alt="Logo" class="logo">
-        <button id="playButton">Reproducir</button>
+        <button id="playButton">▶ Reproducir</button>
         <p id="status"></p>
         <audio id="audio" src="https://radio-proxy-iwb2.onrender.com/radio"></audio>
     </div>
@@ -25,7 +25,7 @@
             audio.load();
             audio.play().then(() => {
                 status.textContent = '';
-                playButton.textContent = 'Reproduciendo';
+                playButton.textContent = '⏸ Pausar';
             }).catch(error => {
                 status.textContent = 'Error al reproducir el audio.';
                 console.error(error);
@@ -34,4 +34,3 @@
     </script>
 </body>
 </html>
-
