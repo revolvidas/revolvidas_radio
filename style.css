@@ -1,118 +1,52 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radio Retro</title>
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 40px;
+}
 
-  <!-- Fuente retro -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+.radio-container {
+  background: #222;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 400px;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
 
-  <style>
-    /* Fondo general */
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Press Start 2P', cursive;
-        background: url('img/m383-14.jpg') no-repeat center center fixed;
-        background-size: cover;
-        color: white;
-        text-align: center;
-    }
+h1 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
 
-    /* Contenedor principal */
-    .container {
-        background: rgba(0, 0, 0, 0.7);
-        border-radius: 20px;
-        padding: 20px;
-        max-width: 400px;
-        margin: 50px auto;
-        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.6);
-    }
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
 
-    /* Logo */
-    .logo {
-        width: 200px;
-        margin-bottom: 15px;
-    }
+.btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
 
-    /* Botón principal de radio */
-    .radio-btn {
-        font-family: 'Press Start 2P', cursive;
-        background: linear-gradient(90deg, #a5e0ff, #ffe08c);
-        border: none;
-        padding: 15px;
-        margin: 10px 0;
-        color: white;
-        border-radius: 30px;
-        cursor: pointer;
-        font-size: 14px;
-        width: 100%;
-        transition: transform 0.2s ease-in-out;
-    }
-    .radio-btn:hover {
-        transform: scale(1.05);
-    }
+.btn.play {
+  background: #28a745;
+  color: #fff;
+}
 
-    /* Otros botones */
-    .btn {
-        font-family: 'Press Start 2P', cursive;
-        display: block;
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 30px;
-        text-decoration: none;
-        color: white;
-        font-size: 14px;
-        transition: transform 0.2s ease-in-out;
-    }
-    .btn:hover {
-        transform: scale(1.05);
-    }
+.btn.pause {
+  background: #dc3545;
+  color: #fff;
+}
 
-    .facebook-btn {
-        background: linear-gradient(90deg, #3b5998, #1e3c72);
-    }
+.btn:hover {
+  transform: scale(1.1);
+}
 
-    .youtube-btn {
-        background: red;
-    }
-
-    .remixes-btn {
-        background: linear-gradient(90deg, #4facfe, #3e50ff);
-    }
-
-    /* Footer */
-    .footer {
-        margin-top: 20px;
-        font-size: 12px;
-        text-shadow: 1px 1px 3px black;
-    }
-
-    .titulo {
-        font-size: 10px;
-        margin: 15px 0;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    <img src="img/logo.png" alt="Logo" class="logo">
-
-    <h2 class="titulo">Radio Retro 90s</h2>
-
-    <button class="radio-btn">🎶 Escuchar en Vivo</button>
-
-    <a href="#" class="btn facebook-btn">📘 Facebook</a>
-    <a href="#" class="btn youtube-btn">▶ YouTube</a>
-    <a href="#" class="btn remixes-btn">🎧 Remixes</a>
-
-    <div class="footer">
-      © 2025 Radio Retro - Todos los derechos reservados
-    </div>
-  </div>
-
-</body>
-</html>
 
