@@ -1,77 +1,85 @@
-/* Fondo general */
 body {
+  font-family: 'Press Start 2P', cursive;
   margin: 0;
   padding: 0;
-  font-family: 'Press Start 2P', cursive;
-  background: url("img/rm383-14.jpg") no-repeat center center fixed;
+  background: url("rm383-14.jpg") no-repeat center center fixed;
   background-size: cover;
   color: white;
   text-align: center;
 }
 
-/* Contenedor principal */
 .container {
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.6);
   padding: 20px;
-  max-width: 400px;
-  margin: 50px auto;
-  box-shadow: 0px 8px 25px rgba(0,0,0,0.6);
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 600px;
 }
 
-/* Logo */
 .logo {
-  width: 200px;
+  max-width: 180px;
   margin-bottom: 15px;
 }
 
-/* Botón principal de radio */
-.radio-btn {
-  font-family: 'Press Start 2P', cursive;  /* 👈 fuerza tipografía retro */
-  background: linear-gradient(90deg, #a500ff, #ff00c8);
+.titulo {
+  color: #a020f0; /* morado */
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.player {
+  position: relative;
+  margin: 20px 0;
+}
+
+#playButton {
+  background: #a020f0;
+  color: white;
   border: none;
-  padding: 15px;
-  margin: 10px 0;
-  color: white;
-  border-radius: 30px;
+  padding: 12px 24px;
+  font-size: 14px;
   cursor: pointer;
-  font-size: 14px;
-  width: 100%;
+  border-radius: 10px;
+  font-family: 'Press Start 2P', cursive;
 }
 
-/* Otros botones */
-.btn {
-  font-family: 'Press Start 2P', cursive;  /* 👈 también retro */
-  display: block;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 30px;
+#playButton:hover {
+  background: #ff00ff;
+}
+
+/* Loader encima del botón */
+.loader {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  border: 3px solid #fff;
+  border-top: 3px solid #a020f0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 2;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.redes a {
+  color: #ff00ff;
   text-decoration: none;
-  color: white;
-  font-size: 14px;
+  margin: 0 10px;
 }
 
-.facebook-btn {
-  background: linear-gradient(90deg, #3b5998, #1e3c72);
+.redes a:hover {
+  color: #ffffff;
 }
 
-.youtube-btn {
-  background: red;
-}
-
-.remixes-btn {
-  background: linear-gradient(90deg, #4facfe, #a500ff);
-}
-
-/* Footer */
-.footer {
+.eslogan {
   margin-top: 20px;
   font-size: 12px;
-  text-shadow: 1px 1px 3px black;
-}
-
-.titulo {
-  font-size: 8px;   /* aquí ajustas el tamaño */
-  font-family: 'Press Start 2P', cursive; /* mantiene la tipografía retro */
-  margin: 15px 0;
+  color: #ddd;
 }
