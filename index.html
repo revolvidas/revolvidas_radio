@@ -36,17 +36,19 @@
     🎶 Clásicos de los 80's y 90's en vivo 🎶<br>
     Escucha la mejor música retro 24/7 🔥
 </p>
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const player = document.getElementById("radioplayer");
     const playbtn = document.getElementById("playbtn");
 
-    // Actualiza el texto del botón según los eventos
+    // Estados del botón
     player.addEventListener("playing", () => playbtn.textContent = "⏸ Pausar");
     player.addEventListener("pause", () => playbtn.textContent = "▶ Reproducir");
     player.addEventListener("waiting", () => {
         if (!player.paused) playbtn.textContent = "⏳ Cargando...";
+    });
+    player.addEventListener("canplay", () => {
+        if (!player.paused) playbtn.textContent = "⏸ Pausar";
     });
     player.addEventListener("error", () => {
         console.error("Error al cargar el stream");
@@ -60,29 +62,17 @@ function toggleRadio() {
 
     if (player.paused) {
         playbtn.textContent = "⏳ Cargando...";
-        player.load(); // Reinicia la carga del stream
-
-        const timeout = setTimeout(() => {
-            if (player.paused) {
-                playbtn.textContent = "▶ Reproducir";
-                console.error("Tiempo de carga agotado");
-            }
-        }, 10000); // 10 segundos
-
-        const playPromise = player.play();
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
-                clearTimeout(timeout);
-            }).catch(error => {
-                clearTimeout(timeout);
-                console.error("Error al intentar reproducir:", error);
-                playbtn.textContent = "▶ Reproducir";
-            });
-        }
+        player.src = player.querySelector("source").src; // refresca stream
+        player.play().catch(error => {
+            console.error("Error al intentar reproducir:", error);
+            playbtn.textContent = "▶ Reproducir";
+        });
     } else {
         player.pause();
     }
 }
 </script>
+
+
 </body>
 </html>
