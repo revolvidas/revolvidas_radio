@@ -1,52 +1,41 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: #fff;
-  text-align: center;
-  padding: 40px;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="radio-container">
+    <h1>🎶 Mi Radio Online</h1>
 
-.radio-container {
-  background: #222;
-  border-radius: 20px;
-  padding: 30px;
-  max-width: 400px;
-  margin: auto;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
+    <!-- Reproductor oculto -->
+    <audio id="radioPlayer">
+      <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
+      Tu navegador no soporta audio.
+    </audio>
 
-h1 {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-}
+    <!-- Controles con tu estilo original -->
+    <div class="controls">
+      <button class="btn play" onclick="playRadio()">▶ Reproducir</button>
+      <button class="btn pause" onclick="pauseRadio()">⏸ Pausar</button>
+    </div>
+  </div>
 
-.controls {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
+  <script>
+    const player = document.getElementById("radioPlayer");
 
-.btn {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
-}
+    function playRadio() {
+      player.play()
+        .then(() => console.log("Reproduciendo radio..."))
+        .catch(err => console.error("Error al reproducir:", err));
+    }
 
-.btn.play {
-  background: #28a745;
-  color: #fff;
-}
-
-.btn.pause {
-  background: #dc3545;
-  color: #fff;
-}
-
-.btn:hover {
-  transform: scale(1.1);
-}
-
-
+    function pauseRadio() {
+      player.pause();
+      console.log("Radio en pausa.");
+    }
+  </script>
+</body>
+</html>
