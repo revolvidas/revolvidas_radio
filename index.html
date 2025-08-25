@@ -4,80 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Radio Online</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    .radio-player {
-      background: #222;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      text-align: center;
-      width: 300px;
-    }
-
-    .radio-title {
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
-
-    .play-btn {
-      background: #e91e63;
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      padding: 12px 25px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.3s;
-    }
-
-    .play-btn:hover {
-      background: #ff4081;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="radio-player">
-    <div class="radio-title">🎵 Mi Radio Online</div>
-    <button id="playBtn" class="play-btn">▶️ Reproducir</button>
-    <audio id="radio" preload="none">
+  <div class="radio-container">
+    <h1>🎶 Mi Radio Online</h1>
+
+    <!-- Player oculto -->
+    <audio id="radioPlayer">
       <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
-      Tu navegador no soporta audio HTML5.
+      Tu navegador no soporta audio.
     </audio>
+
+    <!-- Botones personalizados -->
+    <div class="controls">
+      <button class="btn play" onclick="playRadio()">▶ Reproducir</button>
+      <button class="btn pause" onclick="pauseRadio()">⏸ Pausar</button>
+    </div>
   </div>
 
   <script>
-    const radio = document.getElementById("radio");
-    const playBtn = document.getElementById("playBtn");
-    let isPlaying = false;
+    const player = document.getElementById("radioPlayer");
 
-    playBtn.addEventListener("click", () => {
-      if (!isPlaying) {
-        radio.play().then(() => {
-          isPlaying = true;
-          playBtn.textContent = "⏹ Detener";
-        }).catch(err => {
-          alert("No se pudo reproducir el stream. Verifica el servidor.");
-          console.error(err);
-        });
-      } else {
-        radio.pause();
-        radio.currentTime = 0; // Reinicia el buffer
-        isPlaying = false;
-        playBtn.textContent = "▶️ Reproducir";
-      }
-    });
+    function playRadio() {
+      player.play()
+        .then(() => console.log("Reproduciendo radio..."))
+        .catch(err => console.error("Error al reproducir:", err));
+    }
+
+    function pauseRadio() {
+      player.pause();
+      console.log("Radio en pausa.");
+    }
   </script>
 </body>
 </html>
+
 
