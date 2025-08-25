@@ -1,73 +1,77 @@
+/* Fondo general */
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Press Start 2P', cursive;
-  text-align: center;
-  background: url("rm383.jpg") no-repeat center center fixed;
+  background: url("img/rm383-14.jpg") no-repeat center center fixed;
   background-size: cover;
   color: white;
+  text-align: center;
 }
 
+/* Contenedor principal */
 .container {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
   padding: 20px;
-  margin: 0 auto;
-  max-width: 500px;
-  border-radius: 12px;
+  max-width: 400px;
+  margin: 50px auto;
+  box-shadow: 0px 8px 25px rgba(0,0,0,0.6);
 }
 
+/* Logo */
 .logo {
-  max-width: 200px;
-  margin: 20px auto;
+  width: 200px;
+  margin-bottom: 15px;
 }
 
-.title {
-  color: #ff00ff;
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.btn {
-  display: inline-block;
-  background: #ff00ff;
-  color: white;
-  padding: 12px 20px;
-  margin: 10px;
-  text-decoration: none;
-  border-radius: 8px;
+/* Botón principal de radio */
+.radio-btn {
+  font-family: 'Press Start 2P', cursive;  /* 👈 fuerza tipografía retro */
+  background: linear-gradient(90deg, #a500ff, #ff00c8);
   border: none;
-  font-family: 'Press Start 2P', cursive;
+  padding: 15px;
+  margin: 10px 0;
+  color: white;
+  border-radius: 30px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  font-size: 14px;
+  width: 100%;
 }
 
-.btn:hover {
-  background: #ff33ff;
-  transform: scale(1.1);
+/* Otros botones */
+.btn {
+  font-family: 'Press Start 2P', cursive;  /* 👈 también retro */
+  display: block;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
 }
 
-.socials {
+.facebook-btn {
+  background: linear-gradient(90deg, #3b5998, #1e3c72);
+}
+
+.youtube-btn {
+  background: red;
+}
+
+.remixes-btn {
+  background: linear-gradient(90deg, #4facfe, #a500ff);
+}
+
+/* Footer */
+.footer {
   margin-top: 20px;
-}
-
-.slogan {
-  margin-top: 30px;
   font-size: 12px;
-  line-height: 1.5;
+  text-shadow: 1px 1px 3px black;
 }
 
-/* Loader retro girando */
-.loader {
-  width: 60px;
-  height: 60px;
-  border: 8px solid #ff00ff;
-  border-top: 8px solid #00ffff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 20px auto;
-  image-rendering: pixelated;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.titulo {
+  font-size: 8px;   /* aquí ajustas el tamaño */
+  font-family: 'Press Start 2P', cursive; /* mantiene la tipografía retro */
+  margin: 15px 0;
 }
