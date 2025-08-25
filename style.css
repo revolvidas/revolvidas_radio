@@ -23,11 +23,12 @@ body {
 .logo {
     width: 200px;
     margin-bottom: 15px;
+    border-radius: 12px; /* le da un acabado más suave */
 }
 
 /* Botón principal de radio */
 .radio-btn {
-    font-family: 'Press Start 2P', cursive; /* tipografía retro */
+    font-family: 'Press Start 2P', cursive;
     background: linear-gradient(90deg, #d80e6f, #ffec08);
     border: none;
     padding: 15px;
@@ -37,11 +38,17 @@ body {
     cursor: pointer;
     font-size: 14px;
     width: 100%;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.radio-btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
 
 /* Otros botones */
 .btn {
-    font-family: 'Press Start 2P', cursive; /* tipografía retro */
+    font-family: 'Press Start 2P', cursive;
     display: block;
     padding: 15px;
     margin: 10px 0;
@@ -49,6 +56,12 @@ body {
     text-decoration: none;
     color: white;
     font-size: 14px;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
 
 /* Botones personalizados */
@@ -71,8 +84,10 @@ body {
     text-shadow: 1px 1px 3px black;
 }
 
+/* Título */
 .titulo {
-    font-size: 8px;
+    font-size: 10px; /* subí un poco el tamaño para legibilidad */
     font-family: 'Press Start 2P', cursive;
     margin: 15px 0;
 }
+
