@@ -1,185 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revolvid@s Radio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        /* Reset básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
-        body {
-            font-family: 'Press Start 2P', cursive;
-            background: linear-gradient(135deg, #000000, #1a1a1a, #ff004c);
-            background-size: 400% 400%;
-            animation: bgMove 15s ease infinite;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
+    .radio-player {
+      background: #222;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      text-align: center;
+      width: 300px;
+    }
 
-        @keyframes bgMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    .radio-title {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
 
-        .container {
-            max-width: 600px;
-            margin: auto;
-        }
+    .play-btn {
+      background: #e91e63;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
 
-        /* Logo */
-        .logo {
-            width: 200px;
-            margin: 20px auto;
-            display: block;
-            filter: drop-shadow(0px 0px 10px #ff004c);
-        }
-
-        /* Slogan */
-        .titulo {
-            font-size: 1rem;
-            color: #ffcc00;
-            margin: 20px 0;
-            text-shadow: 2px 2px #000;
-        }
-
-        /* Botón de radio */
-        .radio-container {
-            margin: 30px 0;
-        }
-
-        .radio-btn {
-            background: #ff004c;
-            border: none;
-            color: white;
-            font-size: 1rem;
-            padding: 15px 25px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            box-shadow: 0px 0px 10px #ff004c;
-        }
-
-        .radio-btn:hover {
-            transform: scale(1.1);
-            background: #ff3366;
-        }
-
-        /* Botones sociales */
-        .socials {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .btn {
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            transition: transform 0.2s;
-        }
-
-        .btn:hover {
-            transform: scale(1.1);
-        }
-
-        .facebook-btn {
-            background: #1877f2;
-            color: white;
-        }
-
-        .youtube-btn {
-            background: #ff0000;
-            color: white;
-        }
-
-        .remixes-btn {
-            background: #ff8c00;
-            color: white;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: #ffcc00;
-            text-shadow: 1px 1px #000;
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            .titulo {
-                font-size: 0.8rem;
-            }
-
-            .radio-btn {
-                width: 100%;
-                font-size: 0.9rem;
-            }
-
-            .btn {
-                flex: 1 1 100%;
-                text-align: center;
-            }
-
-            .logo {
-                width: 150px;
-            }
-        }
-    </style>
+    .play-btn:hover {
+      background: #ff4081;
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-    <!-- Logo -->
-    <img src="img/logo.png" alt="Revolvid@s Radio Logo" class="logo">
+  <div class="radio-player">
+    <div class="radio-title">🎵 Mi Radio Online</div>
+    <button id="playBtn" class="play-btn">▶️ Reproducir</button>
+    <audio id="radio" preload="none">
+      <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg">
+      Tu navegador no soporta audio HTML5.
+    </audio>
+  </div>
 
-    <!-- Slogan -->
-    <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
+  <script>
+    const radio = document.getElementById("radio");
+    const playBtn = document.getElementById("playBtn");
+    let isPlaying = false;
 
-    <!-- Botón Reproducción -->
-    <div class="radio-container">
-        <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">▶ Reproducir</button>
-        <audio id="radioplayer" preload="none">
-            <source src="https://radio-proxy.we02.onrender.com/radio" type="audio/mpeg">
-            Tu navegador no soporta audio HTML5.
-        </audio>
-    </div>
-
-    <!-- Botones sociales -->
-    <div class="socials">
-        <a href="https://www.facebook.com/revolvidas" class="btn facebook-btn" target="_blank">Facebook</a>
-        <a href="https://www.youtube.com/@walterdorado" class="btn youtube-btn" target="_blank">YouTube</a>
-        <a href="https://www.mixcloud.com/walter-dorado" class="btn remixes-btn" target="_blank">Mixcloud</a>
-    </div>
-</div>
-
-<p class="footer">🎶 Clásicos de los 80's y 90's en vivo 🎶<br>
-Escucha la mejor música retro 24/7 🔥</p>
-
-<script>
-function toggleRadio() {
-    const player = document.getElementById("radioplayer");
-    const playbtn = document.getElementById("playbtn");
-
-    if (player.paused) {
-        player.play();
-        playbtn.textContent = "⏸ Pausar";
-    } else {
-        player.pause();
-        playbtn.textContent = "▶ Reproducir";
-    }
-}
-</script>
+    playBtn.addEventListener("click", () => {
+      if (!isPlaying) {
+        radio.play().then(() => {
+          isPlaying = true;
+          playBtn.textContent = "⏹ Detener";
+        }).catch(err => {
+          alert("No se pudo reproducir el stream. Verifica el servidor.");
+          console.error(err);
+        });
+      } else {
+        radio.pause();
+        radio.currentTime = 0; // Reinicia el buffer
+        isPlaying = false;
+        playBtn.textContent = "▶️ Reproducir";
+      }
+    });
+  </script>
 </body>
 </html>
+
