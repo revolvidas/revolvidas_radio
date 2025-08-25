@@ -1,36 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Revolvidas</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RevolvidAS Radio</title>
+  <link rel="stylesheet" href="style.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="player-container">
-        <img src="img/logo.png" alt="Logo Radio Revolvidas" class="logo">
-        <h1>Radio Revolvidas</h1>
-        <button id="playButton">▶ Reproducir</button>
-        <p id="status"></p>
-        <audio id="audio" src="https://radio-proxy-iwb2.onrender.com/radio"></audio>
+  <div class="container">
+    <img src="logo.png" alt="RevolvidAS Radio" class="logo">
+
+    <h1 class="titulo">REVOLVIDAS RADIO</h1>
+
+    <!-- Reproductor -->
+    <div class="player">
+      <button id="playButton">▶ Reproducir</button>
+      <div id="loader" class="loader"></div>
+      <audio id="audio" preload="none">
+        <source src="https://stream.zeno.fm/eh9gv1df5s8uv" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+      </audio>
     </div>
 
-    <script>
-        const playButton = document.getElementById('playButton');
-        const audio = document.getElementById('audio');
-        const status = document.getElementById('status');
+    <!-- Redes -->
+    <div class="redes">
+      <a href="https://www.facebook.com/revolvidas" target="_blank">Facebook</a>
+      <a href="https://www.youtube.com/@djwalydorado" target="_blank">YouTube</a>
+      <a href="https://www.mixcloud.com/walter-dorado/" target="_blank">Mixcloud</a>
+    </div>
 
-        playButton.addEventListener('click', () => {
-            status.textContent = 'Cargando...';
-            audio.load();
-            audio.play().then(() => {
-                status.textContent = '';
-                playButton.textContent = '⏸ Pausar';
-            }).catch(error => {
-                status.textContent = 'Error al reproducir el audio.';
-                console.error(error);
-            });
+    <p class="eslogan">Clásicos de los 80’s y 90’s en vivo 🎶<br>Escucha la mejor música retro 24/7.</p>
+  </div>
+
+  <script>
+    const playButton = document.getElementById("playButton");
+    const audio = document.getElementById("audio");
+    const loader = document.getElementById("loader");
+
+    playButton.addEventListener("click", () => {
+      if (audio.paused) {
+        loader.style.display = "block"; // Mostrar loader
+        audio.play().then(() => {
+          loader.style.display = "none"; // Ocultar cuando comience
+          playButton.textContent = "⏸ Pausar";
+        }).catch(err => {
+          loader.style.display = "none"; // Ocultar si falla
+          console.log("Error al reproducir:", err);
         });
-    </script>
+      } else {
+        audio.pause();
+        playButton.textContent = "▶ Reproducir";
+      }
+    });
+  </script>
 </body>
 </html>
