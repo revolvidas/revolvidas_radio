@@ -1,25 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revolvid@s Radio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <!-- Logo -->
-    <img src="img/logo.png" alt="Revolvid@s Radio Logo" class="logo" />
+    <img src="img/logo.png" alt="Revolvid@s Radio Logo" class="logo">
 
     <!-- Slogan -->
     <h2 class="titulo">🔥 HITS QUE NUNCA MUEREN 🔥</h2>
 
-    <!-- Botón / Player -->
+    <!-- Botón Reproducir -->
     <div class="radio-container">
       <button class="btn radio-btn" onclick="toggleRadio()" id="playbtn">▶ Reproducir</button>
       <audio id="radioplayer" preload="none">
-        <source src="https://radio-proxy-iwb2.onrender.com/radio" type="audio/mpeg" />
+        <source src="https://radio-proxy-iw82.onrender.com/radio" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
     </div>
@@ -38,18 +39,15 @@
   <script>
     function toggleRadio() {
       const player = document.getElementById("radioplayer");
-      const btn = document.getElementById("playbtn");
+      const playbtn = document.getElementById("playbtn");
+
       if (player.paused) {
-        player.play().then(() => {
-          btn.textContent = "⏸ Pausar";
-        }).catch(() => {
-          btn.textContent = "▶ Reproducir";
-        });
+        player.play();
+        playbtn.textContent = "⏸ Pausar";
       } else {
         player.pause();
-        btn.textContent = "▶ Reproducir";
+        playbtn.textContent = "▶ Reproducir";
       }
     }
   </script>
 </body>
-</html>
